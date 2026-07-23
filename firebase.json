@@ -1,0 +1,43 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "meayar-alitqan",
+          "appId": "1:461871658786:android:0711205909d0e04d1e577b",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "meayar-alitqan",
+          "configurations": {
+            "android": "1:461871658786:android:0711205909d0e04d1e577b",
+            "ios": "1:461871658786:ios:d7b3d1cf0f73fa271e577b",
+            "macos": "1:461871658786:ios:6fea32577fbb18491e577b",
+            "web": "1:461871658786:web:fd076293fe6b4e0c1e577b",
+            "windows": "1:461871658786:web:d0a54cc625d89e691e577b"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/reset-password",
+        "destination": "/reset-password/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

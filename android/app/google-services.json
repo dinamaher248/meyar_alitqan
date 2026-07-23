@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461871658786",
+    "project_id": "meayar-alitqan",
+    "storage_bucket": "meayar-alitqan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461871658786:android:0711205909d0e04d1e577b",
+        "android_client_info": {
+          "package_name": "com.meyaar.alitqan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyrreWgFj2f1xm_gwHgwCsyDcGfP7-3M0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

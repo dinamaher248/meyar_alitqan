@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.meyaar.alitqan",
+      "sha256_cert_fingerprints": [
+        "1F:E1:1D:B2:89:DF:DA:F6:3F:63:E6:01:F2:9B:D5:13:D6:22:17:A9:7E:79:A6:AC:70:E9:10:1F:25:D2:10:5D"
+      ]
+    }
+  }
+]

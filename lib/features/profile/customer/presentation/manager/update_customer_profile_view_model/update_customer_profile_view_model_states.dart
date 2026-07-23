@@ -1,0 +1,8 @@
+abstract class UpdateCustomerProfileViewModelStates {}
+class UpdateCustomerProfileViewModelInitial extends UpdateCustomerProfileViewModelStates {}
+class UpdateCustomerProfileViewModelLoading extends UpdateCustomerProfileViewModelStates {}
+class UpdateCustomerProfileViewModelSuccess extends UpdateCustomerProfileViewModelStates {}
+class UpdateCustomerProfileViewModelError extends UpdateCustomerProfileViewModelStates {
+  final String message;
+  UpdateCustomerProfileViewModelError(this.message);
+}

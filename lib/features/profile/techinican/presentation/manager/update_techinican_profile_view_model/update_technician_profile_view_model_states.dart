@@ -1,0 +1,10 @@
+abstract class UpdateTechnicianProfileViewModelStates {}
+class UpdateTechnicianProfileViewModelInitial extends UpdateTechnicianProfileViewModelStates {}
+class UpdateTechnicianProfileViewModelLoading extends UpdateTechnicianProfileViewModelStates {}
+class UpdateTechnicianProfileViewModelSuccess extends UpdateTechnicianProfileViewModelStates {}
+class UpdateTechnicianProfileViewModelError extends UpdateTechnicianProfileViewModelStates {
+  final String message;
+
+  UpdateTechnicianProfileViewModelError(this.message);
+}
+

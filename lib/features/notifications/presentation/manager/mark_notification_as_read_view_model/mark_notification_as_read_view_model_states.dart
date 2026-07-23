@@ -1,0 +1,9 @@
+abstract class MarkNotificationAsReadViewModelStates {}
+class MarkNotificationAsReadViewModelInitial extends MarkNotificationAsReadViewModelStates {}
+class MarkNotificationAsReadViewModelLoading extends MarkNotificationAsReadViewModelStates {}
+class MarkNotificationAsReadViewModelSuccess extends MarkNotificationAsReadViewModelStates {}
+class MarkNotificationAsReadViewModelError extends MarkNotificationAsReadViewModelStates {
+  final String message;
+
+  MarkNotificationAsReadViewModelError(this.message);
+}

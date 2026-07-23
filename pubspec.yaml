@@ -1,0 +1,120 @@
+name: meayar_alitqan
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3
+  photo_view: ^0.15.0
+  flutter_bloc: ^9.1.1
+  connectivity_plus: ^7.0.0
+  dio: ^5.9.0
+  flutter_launcher_icons: ^0.14.4
+  intl: ^0.20.0
+  flutter_localization: ^0.3.3
+  smooth_page_indicator: ^2.0.1
+  flutter_svg: ^2.2.3
+  firebase_core: ^4.2.1
+  supabase_flutter: ^2.12.0
+  either_dart: ^1.0.0
+  injectable: ^2.1.5
+  lottie: ^3.3.2
+  flutter_secure_storage: ^10.0.0
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.1.1
+  dots_indicator: ^4.0.1
+  mime: ^2.0.0
+  image_picker: ^1.2.1
+  video_player: ^2.10.1
+  video_thumbnail: ^0.5.6
+  uuid: ^4.5.2
+  shimmer: ^3.0.0
+  auto_size_text: ^3.0.0
+
+
+  shared_preferences: any
+  get_it: any
+  path_provider: ^2.1.5
+  geocoding: ^4.0.0
+  geolocator: ^14.0.2
+  google_sign_in: ^6.2.1
+  firebase_messaging: ^16.1.0
+  flutter_local_notifications: ^19.5.0
+  app_links: ^6.4.1
+  flutter_rating_bar: ^4.0.1
+  intl_phone_field: ^3.2.0
+  pdf: ^3.11.3
+  printing: ^5.14.2
+  country_picker: ^2.0.27
+  bidi: ^2.0.13
+  arabic_reshaper: ^0.0.1
+  google_nav_bar: ^5.0.7
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.3.3
+  injectable_generator: ^2.3.0
+
+# --------------------------
+#  Localization Configuration
+# --------------------------
+l10n:
+  arb-dir: lib/config/localization
+  template-arb-file: app_en.arb
+  output-localization-file: app_localizations.dart
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/lotties/
+
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/cairo/Cairo-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/cairo/Cairo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/cairo/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/cairo/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/cairo/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/cairo/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/cairo/Cairo-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/cairo/Cairo-Black.ttf
+          weight: 900
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  web:
+    generate: true
+    background_color: "#2c4466"
+    theme_color: "#2c4466"
+
+  image_path: "assets/icons/app_logo2.png"
+
+  adaptive_icon_background: "#2c4466"
+  adaptive_icon_foreground: "assets/icons/app_logo2.png"
+
