@@ -276,7 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'ابحث عن خدمه....';
 
   @override
-  String get categories => 'الخدمات المتاحه';
+  String get categories => 'أقسام الخدمات';
 
   @override
   String get completeData => 'استكمال البيانات';
@@ -543,7 +543,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noPreviousOrders => 'لا يوجد طلبات سابقة';
 
   @override
-  String get ourServiceOffers => 'العروض على خدماتنا';
+  String get ourServiceOffers => 'العروض المتاحة';
 
   @override
   String get aboutUsInfo => 'ما تود معرفته عنا';

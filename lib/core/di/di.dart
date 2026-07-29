@@ -18,3 +18,4 @@ Future<void> configureDependencies() async {
   getIt.registerLazySingleton(() => Supabase.instance.client);
   getIt.init();
 }
+

@@ -99,7 +99,7 @@ class MainCategoriesGridView extends StatelessWidget {
               crossAxisCount: 4,
               mainAxisSpacing: RS.size(context, 12),
               crossAxisSpacing: RS.size(context, 8),
-              childAspectRatio: 0.75,
+              childAspectRatio: 0.95,
             ),
             itemCount: filteredCategories.length,
             shrinkWrap: true,

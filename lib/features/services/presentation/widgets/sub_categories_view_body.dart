@@ -13,23 +13,21 @@ class SubCategoriesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              BlocProvider(
-                create: (context) =>
-                    getIt<GetSubCategoriesViewModel>()
-                      ..getSubCategories(categoryId),
-                child:  WebMaxWidth(
-                  child: SubCategoriesGridView(mainCategoryId: categoryId),
-                ),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            BlocProvider(
+              create: (context) =>
+                  getIt<GetSubCategoriesViewModel>()
+                    ..getSubCategories(categoryId),
+              child: WebMaxWidth(
+                child: SubCategoriesGridView(mainCategoryId: categoryId),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

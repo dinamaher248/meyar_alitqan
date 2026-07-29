@@ -406,6 +406,8 @@ import '../../features/services/domain/repositories/categories_repos/get_sub_cat
     as _i261;
 import '../../features/services/domain/repositories/request_priority_repos/get_request_priority_repo/get_request_priority_repo.dart'
     as _i984;
+import '../../features/services/domain/repositories/service_offers_repository.dart'
+    as _i326;
 import '../../features/services/domain/use_cases/categories_use_cases/get_main_categories_use_case/get_main_categories_use_case.dart'
     as _i111;
 import '../../features/services/domain/use_cases/categories_use_cases/get_services_by_sub_use_case/get_services_by_sub_use_case.dart'
@@ -422,6 +424,8 @@ import '../../features/services/presentation/manager/get_serives_by_sub_view_mod
     as _i899;
 import '../../features/services/presentation/manager/get_sub_categories_view_model/get_sub_categories_view_model.dart'
     as _i952;
+import '../../features/services/presentation/manager/service_model_view_model/service_offers_view_model.dart'
+    as _i698;
 import '../../features/spare_parts/data/data_source/remote/add_spare_part_remote_data_source/add_spare_part_remote_data_source.dart'
     as _i8;
 import '../../features/spare_parts/data/data_source/remote/get_spare_part_remote_data_source/get_spare_part_remote_data_source.dart'
@@ -518,6 +522,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i798.GetSparePartRemoteDataSource>(
       () => _i543.GetSparePartRemoteDataSourceImpl(),
+    );
+    gh.factory<_i698.GetServiceOffersViewModel>(
+      () =>
+          _i698.GetServiceOffersViewModel(gh<_i326.ServiceOffersRepository>()),
     );
     gh.factory<_i82.GetOrderDetailsRemoteDataSource>(
       () => _i102.GetOrderDetailsRemoteDataSourceImpl(),

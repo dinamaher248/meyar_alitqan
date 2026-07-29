@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:meayar_alitqan/core/utils/assets_manager.dart';
 import 'package:meayar_alitqan/l10n/app_localizations.dart';
 
- 
 import '../../../tabs/shared/widgets/custom_bottom_nav_bar.dart';
 import '../widgets/customer_mobile_tabs.dart';
 
@@ -29,10 +28,16 @@ class _CustomerHomeMobileScaffoldState
         activeIcon: AssetsManager.home,
       ),
       BottomNavItem(
+        label: loc.categories,
+        icon: AssetsManager.handStar,
+        activeIcon: AssetsManager.category,
+      ),
+      BottomNavItem(
         label: loc.orders,
         icon: AssetsManager.orders,
         activeIcon: AssetsManager.orders,
       ),
+
       BottomNavItem(
         label: loc.account,
         icon: AssetsManager.user,

@@ -52,15 +52,15 @@ class _MobileCategoryCard extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: RS.size(context, 12),
+        vertical: RS.size(context, 25),
         horizontal: RS.size(context, 8),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: RS.size(context, 32),
-            height: RS.size(context, 32),
+            width: RS.size(context, 50),
+            height: RS.size(context, 50),
             child: CachedNetworkImage(
               imageUrl: image,
               fit: BoxFit.contain,
@@ -88,8 +88,8 @@ class _MobileCategoryCard extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: RS.font(context, 13),
+              fontWeight: FontWeight.w500,
+              fontSize: RS.font(context, 14),
               color: ColorsManager.primaryTextDarkColor,
             ),
           ),

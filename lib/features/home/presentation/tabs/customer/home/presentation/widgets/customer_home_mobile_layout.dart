@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:meayar_alitqan/features/home/presentation/tabs/customer/home/presentation/widgets/maintenance_promo_banner.dart';
 
 import '../../../../../../../../config/routes/routes_manager.dart';
+import '../../../../../../../../core/components/search_text_field.dart';
 import '../../../../../../../../core/helper/responsive_size.dart';
-import '../../../../../../../../core/services/whatsapp_service.dart';
-import '../../../../../../../../core/utils/assets_manager.dart';
 import '../../../../../../../../core/utils/colors_manager.dart';
 import '../../../../../../../../l10n/app_localizations.dart';
-
 import '../../../../../../../banners/presentation/manager/get_banners_view_model/get_banners_view_model.dart';
 import '../../../../../../../banners/presentation/manager/get_banners_view_model/get_banners_view_model_states.dart';
-import '../../../../../../../banners/presentation/widgets/banner_section.dart';
+import '../../../../../../../services/domain/entities/service_offer_entity.dart';
 import '../../../../../../../services/presentation/widgets/main_categories_list_view.dart';
+import '../../../../../../../services/presentation/widgets/service_offer_card.dart';
 import '../../../../shared/widgets/home_header.dart';
-import '../../../../../../../../core/components/search_text_field.dart';
 
 class CustomerHomeMobileLayout extends StatefulWidget {
   const CustomerHomeMobileLayout({super.key});
@@ -27,7 +24,28 @@ class CustomerHomeMobileLayout extends StatefulWidget {
 
 class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
   final searchController = TextEditingController();
-
+  final List<ServiceOfferEntity> _staticOffers = const [
+    ServiceOfferEntity(
+      id: '1',
+      title: 'تركيب اجهزة حمايه',
+      imageUrl:
+          'https://images.unsplash.com/photo-1558002038-1055907df827?w=400',
+      rating: 4.5,
+      satisfiedCustomersCount: 20,
+      price: null,
+      categoryId: 'security',
+    ),
+    ServiceOfferEntity(
+      id: '2',
+      title: 'باقة التنظيف الشاملة',
+      imageUrl:
+          'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400',
+      rating: 4.5,
+      satisfiedCustomersCount: 20,
+      price: 200,
+      categoryId: 'cleaning',
+    ),
+  ];
   @override
   void initState() {
     super.initState();
@@ -115,18 +133,18 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                 
                   Text(
                     loc.categories,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      fontSize: RS.font(context, 18),
+                      color: ColorsManager.primaryTextDarkColor,
                     ),
                   ),
-                   Text(
+                  Text(
                     "عرض المزيد",
                     style: TextStyle(
-                      fontSize: RS.font(context, 13),
+                      fontSize: RS.font(context, 14),
                       fontWeight: FontWeight.w500,
                       color: ColorsManager.primaryColor,
                     ),
@@ -150,18 +168,18 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  
                   Text(
                     loc.ourServiceOffers,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      fontSize: RS.font(context, 18),
+                      color: ColorsManager.primaryTextDarkColor,
                     ),
                   ),
                   Text(
                     "عرض المزيد",
                     style: TextStyle(
-                      fontSize: RS.font(context, 13),
+                      fontSize: RS.font(context, 14),
                       fontWeight: FontWeight.w500,
                       color: ColorsManager.primaryColor,
                     ),
@@ -172,69 +190,170 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
 
             SizedBox(height: RS.size(context, 12)),
 
-            /// ===== TODO: كروت العروض المتاحة =====
-            /// محتاجة الـ Widget/Entity الحقيقي هنا. لو عندك Card جاهز
-            /// (زي service_offer_card.dart) استبدلي الـ Placeholder ده بيه.
-            BlocBuilder<GetBannersViewModel, GetBannersViewModelStates>(
-              builder: (context, state) {
-                if (state is GetBannersViewModelSuccess &&
-                    state.banners.isNotEmpty) {
-                  final normalBanners = state.banners
-                      .where((e) => e.position == 0)
-                      .toList();
-
-                  if (normalBanners.isNotEmpty) {
-                    return SizedBox(
-                      height: RS.size(context, 200),
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: RS.size(context, 16),
-                        ),
-                        itemCount: normalBanners.length,
-                        separatorBuilder: (_, __) =>
-                            SizedBox(width: RS.size(context, 12)),
-                        itemBuilder: (context, index) {
-                          // Placeholder card - استبدليها بالكارت الحقيقي
-                          return Container(
-                            width: RS.size(context, 160),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                RS.radius(context, 12),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.05),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            clipBehavior: Clip.antiAlias,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                AspectRatio(
-                                  aspectRatio: 16 / 10,
-                                  child: Image.network(
-                                    normalBanners[index].imageUrl,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  }
-                }
-                return const SizedBox.shrink();
-              },
+            // BlocBuilder<
+            //   GetServiceOffersViewModel,
+            //   GetServiceOffersViewModelStates
+            // >(
+            //   builder: (context, state) {
+            //     if (state is GetServiceOffersViewModelSuccess) {
+            //       return Padding(
+            //         padding: EdgeInsets.symmetric(
+            //           horizontal: RS.size(context, 16),
+            //         ),
+            //         child: GridView.builder(
+            //           shrinkWrap: true,
+            //           physics: const NeverScrollableScrollPhysics(),
+            //           itemCount: state.offers.length,
+            //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //             crossAxisCount: 2,
+            //             crossAxisSpacing: RS.size(context, 12),
+            //             mainAxisSpacing: RS.size(context, 12),
+            //             childAspectRatio: 0.68,
+            //           ),
+            //           itemBuilder: (context, index) {
+            //             final offer = state.offers[index];
+            //             return ServiceOfferCard(
+            //               offer: offer,
+            //               onTap: () {},
+            //               onBookNow: () {},
+            //             );
+            //           },
+            //         ),
+            //       );
+            //     }
+            //     return const SizedBox.shrink();
+            //   },
+            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _staticOffers.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: RS.size(context, 12),
+                  mainAxisSpacing: RS.size(context, 12),
+                  childAspectRatio: 0.78,
+                ),
+                itemBuilder: (context, index) {
+                  final offer = _staticOffers[index];
+                  return ServiceOfferCard(
+                    offer: offer,
+                    isOffer: true,
+                    onTap: () {},
+                    onBookNow: () {},
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    loc.categories,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: RS.font(context, 18),
+                      color: ColorsManager.primaryTextDarkColor,
+                    ),
+                  ),
+                  Text(
+                    "عرض المزيد",
+                    style: TextStyle(
+                      fontSize: RS.font(context, 14),
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.primaryColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
 
-            SizedBox(height: RS.size(context, 32)),
+            SizedBox(height: RS.size(context, 12)),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
+              child: GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _staticOffers.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: RS.size(context, 12),
+                  mainAxisSpacing: RS.size(context, 12),
+                  childAspectRatio: 0.98,
+                ),
+                itemBuilder: (context, index) {
+                  final offer = _staticOffers[index];
+                  return ServiceOfferCard(
+                    offer: offer,
+                    onTap: () {},
+                    onBookNow: () {},
+                  );
+                },
+              ),
+            ),
+
+            // BlocBuilder<GetBannersViewModel, GetBannersViewModelStates>(
+            //   builder: (context, state) {
+            //     if (state is GetBannersViewModelSuccess &&
+            //         state.banners.isNotEmpty) {
+            //       final normalBanners = state.banners
+            //           .where((e) => e.position == 0)
+            //           .toList();
+
+            //       if (normalBanners.isNotEmpty) {
+            //         return SizedBox(
+            //           height: RS.size(context, 200),
+            //           child: ListView.separated(
+            //             scrollDirection: Axis.horizontal,
+            //             padding: EdgeInsets.symmetric(
+            //               horizontal: RS.size(context, 16),
+            //             ),
+            //             itemCount: normalBanners.length,
+            //             separatorBuilder: (_, __) =>
+            //                 SizedBox(width: RS.size(context, 12)),
+            //             itemBuilder: (context, index) {
+            //               // Placeholder card - استبدليها بالكارت الحقيقي
+            //               return Container(
+            //                 width: RS.size(context, 160),
+            //                 decoration: BoxDecoration(
+            //                   color: Colors.white,
+            //                   borderRadius: BorderRadius.circular(
+            //                     RS.radius(context, 12),
+            //                   ),
+            //                   boxShadow: [
+            //                     BoxShadow(
+            //                       color: Colors.black.withValues(alpha: 0.05),
+            //                       blurRadius: 8,
+            //                       offset: const Offset(0, 4),
+            //                     ),
+            //                   ],
+            //                 ),
+            //                 clipBehavior: Clip.antiAlias,
+            //                 child: Column(
+            //                   crossAxisAlignment: CrossAxisAlignment.stretch,
+            //                   children: [
+            //                     AspectRatio(
+            //                       aspectRatio: 16 / 10,
+            //                       child: Image.network(
+            //                         normalBanners[index].imageUrl,
+            //                         fit: BoxFit.cover,
+            //                       ),
+            //                     ),
+            //                   ],
+            //                 ),
+            //               );
+            //             },
+            //           ),
+            //         );
+            //       }
+            //     }
+            //     return const SizedBox.shrink();
+            //   },
+            // ),
           ],
         ),
       ),

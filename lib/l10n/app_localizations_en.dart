@@ -276,7 +276,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search for services.....';
 
   @override
-  String get categories => 'Available Services';
+  String get categories => 'Services Section';
 
   @override
   String get completeData => 'Complete data';
@@ -543,7 +543,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noPreviousOrders => 'No previous orders';
 
   @override
-  String get ourServiceOffers => 'Offers on our services';
+  String get ourServiceOffers => 'Available services';
 
   @override
   String get aboutUsInfo => 'What you need to know about us';

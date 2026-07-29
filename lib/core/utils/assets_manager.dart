@@ -51,6 +51,7 @@ class AssetsManager {
   static const String notification = '$iconsBaseUrl/bell.svg';
   static const String search = '$iconsBaseUrl/search.svg';
   static const String category = '$iconsBaseUrl/category.svg';
+  static const String handStar = '$iconsBaseUrl/hand_star.svg';
   static const String description = '$iconsBaseUrl/description.svg';
   static const String shield = '$iconsBaseUrl/shield.svg';
   static const String photo = '$iconsBaseUrl/picture.svg';
