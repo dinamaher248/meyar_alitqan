@@ -19,9 +19,9 @@ class ServiceRequestDescriptionSection extends StatelessWidget {
       children: [
         Text(
           t.addServiceRequestDetails,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontSize: RS.font(context, 16),
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
         ),
         SizedBox(height: RS.size(context, 10)),

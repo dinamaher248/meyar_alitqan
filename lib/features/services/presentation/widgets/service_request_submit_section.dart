@@ -64,9 +64,9 @@ class ServiceRequestSubmitSection extends StatelessWidget {
           final formState = vm.formKey.currentState;
           if (formState == null) {
             debugPrint("FormState is null! Cannot submit.");
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Form is not ready!")),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(const SnackBar(content: Text("Form is not ready!")));
             return;
           }
 
@@ -102,29 +102,34 @@ class ServiceRequestSubmitSection extends StatelessWidget {
           debugPrint("validateAndBuildOrder completed: $result");
 
           // ================= HANDLE RESULT =================
-        result.fold(
-  (error) {
-    debugPrint("validateAndBuildOrder returned error: $error");
-    final message = switch (error) {
-      CreateOrderValidationError.imagesUploading => t.imagesUploading,
-      CreateOrderValidationError.videoUploading => t.videoUploading,
-      CreateOrderValidationError.missingScheduledDate => t.scheduledDateRequired,
-      CreateOrderValidationError.unauthenticated => t.somethingWentWrong,
-      _ => "Unknown error",
-    };
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: RS.font(context, 14))),
-      ),
-    );
-  },
-  (order) {
-    debugPrint("Order validated, calling createOrder...");
-    vm.createOrder(order);
-  },
-);
-
+          result.fold(
+            (error) {
+              debugPrint("validateAndBuildOrder returned error: $error");
+              final message = switch (error) {
+                CreateOrderValidationError.imagesUploading => t.imagesUploading,
+                CreateOrderValidationError.videoUploading => t.videoUploading,
+                CreateOrderValidationError.missingScheduledDate =>
+                  t.scheduledDateRequired,
+                CreateOrderValidationError.unauthenticated =>
+                  t.somethingWentWrong,
+                _ => "Unknown error",
+              };
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    message,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: RS.font(context, 14),
+                    ),
+                  ),
+                ),
+              );
+            },
+            (order) {
+              debugPrint("Order validated, calling createOrder...");
+              vm.createOrder(order);
+            },
+          );
         },
       ),
     );

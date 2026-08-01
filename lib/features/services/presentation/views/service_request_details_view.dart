@@ -8,13 +8,14 @@ import 'package:meayar_alitqan/features/location/presentation/manager/get_servic
 import 'package:meayar_alitqan/features/services/presentation/widgets/guest_locked_card.dart';
 
 import '../../../../core/components/app_loader.dart';
-import '../../../../core/components/custom_app_bar.dart';
 import '../../../../core/di/di.dart';
+import '../../../../core/helper/responsive_size.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../config/routes/routes_manager.dart';
 import '../../../location/presentation/manager/get_current_location_view_model/get_current_location_view_model.dart';
 import '../../../orders/customer/presentation/manager/create_order_view_model/create_order_view_model.dart';
 import '../../../orders/customer/presentation/manager/create_order_view_model/create_order_view_model_states.dart';
+import '../widgets/order_stepper_header.dart';
 import '../widgets/service_request_details_view_body.dart';
 
 class ServiceRequestDetailsView extends StatelessWidget {
@@ -38,12 +39,8 @@ class ServiceRequestDetailsView extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => getIt<CreateOrderViewModel>(),
-        ),
-        BlocProvider(
-          create: (_) => getIt<GetCurrentUserLocationViewModel>(),
-        ),
+        BlocProvider(create: (_) => getIt<CreateOrderViewModel>()),
+        BlocProvider(create: (_) => getIt<GetCurrentUserLocationViewModel>()),
         BlocProvider(
           create: (_) => getIt<GetServiceAreasViewModel>()..getServiceAreas(),
         ),
@@ -53,58 +50,65 @@ class ServiceRequestDetailsView extends StatelessWidget {
           final isLoading = state is CreateOrderViewModelLoading;
 
           return Scaffold(
-            appBar: CustomAppBar(
-              title: title,
-            ),
-            body: Stack(
-              children: [
-                /// ================= BODY =================
-                Center(
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 700),
-                    child: AbsorbPointer(
-                      absorbing: isGuest, 
-                      child: ServiceRequestDetailsBody(
-                        mainCategoryId: mainCategoryId,
-                        categoryId: categoryId,
-                        subserviceId: subserviceId,
-                        title: title,
+            body: SafeArea(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      
+                      /// ================= BODY =================
+                      Expanded(
+                        child: Center(
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 700),
+                            child: AbsorbPointer(
+                              absorbing: isGuest,
+                              child: ServiceRequestDetailsBody(
+                                mainCategoryId: mainCategoryId,
+                                categoryId: categoryId,
+                                subserviceId: subserviceId,
+                                title: title,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ),
 
-                /// ================= GUEST OVERLAY =================
-                if (isGuest)
-                  Positioned.fill(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-                      child: Container(
-                        color: Colors.black.withOpacity(0.2),
-                        alignment: Alignment.center,
-                        child: GuestLockedCard(
-                          title: loc.loginRequired,
-                          description: loc.loginToCreateOrder,
-                          buttonText: loc.login,
-                          onLogin: () {
-                           kIsWeb ?   Navigator.pushNamed(
-                             context,
-                             RoutesManager.roleSelection,
-                           
-                           ) :  Navigator.pushNamedAndRemoveUntil(
-                             context,
-                             RoutesManager.splash,
-                                 (route) => false,
-                           );
-                          },
+                  /// ================= GUEST OVERLAY =================
+                  if (isGuest)
+                    Positioned.fill(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                        child: Container(
+                          color: Colors.black.withOpacity(0.2),
+                          alignment: Alignment.center,
+                          child: GuestLockedCard(
+                            title: loc.loginRequired,
+                            description: loc.loginToCreateOrder,
+                            buttonText: loc.login,
+                            onLogin: () {
+                              kIsWeb
+                                  ? Navigator.pushNamed(
+                                      context,
+                                      RoutesManager.roleSelection,
+                                    )
+                                  : Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      RoutesManager.splash,
+                                      (route) => false,
+                                    );
+                            },
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
-                /// ================= LOADER =================
-                if (isLoading) const AppLoader(),
-              ],
+                  /// ================= LOADER =================
+                  if (isLoading) const AppLoader(),
+                ],
+              ),
             ),
           );
         },

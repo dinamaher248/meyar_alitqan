@@ -47,6 +47,7 @@
   "registerSubtitle": "Sign up to get started",
   "forgotPassword": "Forgot Password?",
   "resetPassword": "Reset Password",
+  "emergencyBannerMessage": "Choosing the request type helps us provide the best technician at the right time.",
   "dontHaveAccount": "Don't have an account?",
   "alreadyHaveAccount": "Already have an account?",
   "createNewAccount": "Create New Account",
@@ -99,6 +100,7 @@
   "writeRequestDetailsHint": "Describe the issue clearly to help us serve you better.",
   "addPhotosForYourProblem": "Add Photos of the Issue",
   "selectRequestType": "Select Request Priority",
+  "requestType": "Request Priority",
   "scheduled": "Scheduled",
   "scheduledSubtitle": "Best price · Service within 1–2 days",
   "urgent": "Urgent",
@@ -297,7 +299,8 @@
   "description": "Description",
   "status": "Status",
  
-   
+   "customerReviews": "Customer Reviews",
+"reviewsCount": "reviews",
   "pending": "Pending",
   "approved": "Approved",
   "rejected": "Rejected",

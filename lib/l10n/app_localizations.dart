@@ -353,6 +353,12 @@ abstract class AppLocalizations {
   /// **'Reset Password'**
   String get resetPassword;
 
+  /// No description provided for @emergencyBannerMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Choosing the request type helps us provide the best technician at the right time.'**
+  String get emergencyBannerMessage;
+
   /// No description provided for @dontHaveAccount.
   ///
   /// In en, this message translates to:
@@ -632,7 +638,7 @@ abstract class AppLocalizations {
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
-  /// **'Available Services'**
+  /// **'Services Section'**
   String get categories;
 
   /// No description provided for @completeData.
@@ -664,6 +670,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select Request Priority'**
   String get selectRequestType;
+
+  /// No description provided for @requestType.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Priority'**
+  String get requestType;
 
   /// No description provided for @scheduled.
   ///
@@ -1154,7 +1166,7 @@ abstract class AppLocalizations {
   /// No description provided for @ourServiceOffers.
   ///
   /// In en, this message translates to:
-  /// **'Offers on our services'**
+  /// **'Available services'**
   String get ourServiceOffers;
 
   /// No description provided for @aboutUsInfo.
@@ -1672,6 +1684,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Status'**
   String get status;
+
+  /// No description provided for @customerReviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Reviews'**
+  String get customerReviews;
+
+  /// No description provided for @reviewsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'reviews'**
+  String get reviewsCount;
 
   /// No description provided for @pending.
   ///

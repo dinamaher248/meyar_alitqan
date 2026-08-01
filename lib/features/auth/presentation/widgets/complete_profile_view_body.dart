@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../config/routes/routes_manager.dart';
 import '../../../../core/components/custom_button.dart';
 import '../../../../core/components/custom_text_field.dart';
-import '../../../../core/helper/responsive_size.dart';
 import '../../../../core/cubit/app_user/app_user_cubit.dart';
-import '../../../../config/routes/routes_manager.dart';
+import '../../../../core/helper/responsive_size.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../manager/complete_profile_view_model/complete_profile_view_model.dart';
 
@@ -21,9 +21,7 @@ class CompleteProfileViewBody extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => CompleteProfileViewModel(),
-      child: BlocConsumer<
-          CompleteProfileViewModel,
-          CompleteProfileStates>(
+      child: BlocConsumer<CompleteProfileViewModel, CompleteProfileStates>(
         listener: (context, state) {
           if (state is CompleteProfileSuccess) {
             context.read<AppUserCubit>().updatePhone(state.phone);
@@ -31,19 +29,18 @@ class CompleteProfileViewBody extends StatelessWidget {
             Navigator.pushNamedAndRemoveUntil(
               context,
               RoutesManager.homeView,
-                  (_) => false,
+              (_) => false,
             );
           }
 
           if (state is CompleteProfileError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
           }
         },
         builder: (context, state) {
-          final isLoading =
-          state is CompleteProfileLoading;
+          final isLoading = state is CompleteProfileLoading;
 
           return SafeArea(
             child: SingleChildScrollView(
@@ -56,13 +53,9 @@ class CompleteProfileViewBody extends StatelessWidget {
                     children: [
                       SizedBox(height: RS.size(context, 40)),
 
-
                       Text(
                         t.completeProfileTitle,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontSize: RS.font(context, 22),
                           fontWeight: FontWeight.bold,
                         ),
@@ -84,8 +77,7 @@ class CompleteProfileViewBody extends StatelessWidget {
                         hintText: t.phoneNumber,
                         keyboardType: TextInputType.phone,
                         validator: (value) {
-                          if (value == null ||
-                              value.trim().isEmpty) {
+                          if (value == null || value.trim().isEmpty) {
                             return t.phoneRequired;
                           }
                           if (value.length < 8) {
@@ -98,23 +90,19 @@ class CompleteProfileViewBody extends StatelessWidget {
                       SizedBox(height: RS.size(context, 30)),
 
                       CustomButton(
-                        text: t.continueText,
+                        text: t.onboardingContinue,
                         isLoading: isLoading,
                         onPressed: isLoading
                             ? null
                             : () {
-                          if (!formKey.currentState!
-                              .validate()) {
-                            return;
-                          }
+                                if (!formKey.currentState!.validate()) {
+                                  return;
+                                }
 
-                          context
-                              .read<
-                              CompleteProfileViewModel>()
-                              .submitPhone(
-                            phoneController.text.trim(),
-                          );
-                        },
+                                context
+                                    .read<CompleteProfileViewModel>()
+                                    .submitPhone(phoneController.text.trim());
+                              },
                       ),
                     ],
                   ),

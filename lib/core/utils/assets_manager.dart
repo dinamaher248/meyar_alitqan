@@ -51,7 +51,10 @@ class AssetsManager {
   static const String notification = '$iconsBaseUrl/bell.svg';
   static const String search = '$iconsBaseUrl/search.svg';
   static const String category = '$iconsBaseUrl/category.svg';
-  static const String handStar = '$iconsBaseUrl/hand_star.svg';
+  static const String handStar = '$iconsBaseUrl/hand_stars.svg';
+  static const String power = '$iconsBaseUrl/power.png';
+  static const String emergency = '$iconsBaseUrl/emergency.png';
+  static const String calendarIcon = '$iconsBaseUrl/calender_icon.png';
   static const String description = '$iconsBaseUrl/description.svg';
   static const String shield = '$iconsBaseUrl/shield.svg';
   static const String photo = '$iconsBaseUrl/picture.svg';

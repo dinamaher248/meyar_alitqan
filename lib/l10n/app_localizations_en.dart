@@ -138,6 +138,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
+  String get emergencyBannerMessage => 'Choosing the request type helps us provide the best technician at the right time.';
+
+  @override
   String get dontHaveAccount => 'Don\'t have an account?';
 
   @override
@@ -292,6 +295,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectRequestType => 'Select Request Priority';
+
+  @override
+  String get requestType => 'Request Priority';
 
   @override
   String get scheduled => 'Scheduled';
@@ -802,6 +808,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get status => 'Status';
+
+  @override
+  String get customerReviews => 'Customer Reviews';
+
+  @override
+  String get reviewsCount => 'reviews';
 
   @override
   String get pending => 'Pending';

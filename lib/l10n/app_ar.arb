@@ -97,10 +97,11 @@
   "addServiceRequestDetails": "إضافة تفاصيل طلب الخدمة",
   "serviceDetails": "وصف الخدمه",
   "scheduleDate": "موعد تنفيذ الخدمة",
-
+"emergencyBannerMessage":"اختيار نوع الطلب يساعدنا في توفير أفضل فني في الوقت المناسب",
   "writeRequestDetailsHint": "اكتب تفاصيل المشكلة هنا، ويرجى توضيحها قدر الإمكان.",
   "addPhotosForYourProblem": "إضافة صور للمشكلة",
   "selectRequestType": "اختر نوع الطلب",
+  "requestType": "نوع الطلب",
   "scheduled": "طلب مجدول",
   "scheduledSubtitle": "أفضل سعر – تنفيذ خلال يوم أو يومين",
   "urgent": "طلب عاجل",
@@ -122,7 +123,7 @@
   "orderStatusCompleted": "مكتمل",
   "orderStatusCancelled": "ملغي",
   "orderName": "اسم الطلب",
-  "serviceName": "الخدمة",
+  "serviceName": "قسم الخدمة",
   "serviceDate": "التاريخ",
   "serviceTime": "الوقت",
   "uploadedPhotos": "الصور المرفقه",
@@ -288,10 +289,14 @@
   "price": "السعر المتوقع",
   "approvedPrice": "السعر المعتمد",
   "quantity": "الكمية",
-  "description": "الوصف",
+  "description": "وصف المشكلة",
   "status": "الحالة",
    
- 
+ "customerReviews": "اراء العملاء",
+"@customerReviews": {},
+
+"reviewsCount": "تقييم",
+"@reviewsCount": {},
   "pending": "قيد المراجعة",
   "approved": "تمت الموافقة",
   "rejected": "مرفوض",

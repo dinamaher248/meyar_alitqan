@@ -17,10 +17,8 @@ class CreateOrderViewModel extends Cubit<CreateOrderViewModelStates> {
   final CreateOrderUseCase createOrderUseCase;
   final SecureStorageService secureStorageService;
 
-  CreateOrderViewModel(
-    this.createOrderUseCase,
-    this.secureStorageService,
-  ) : super(CreateOrderViewModelInitial());
+  CreateOrderViewModel(this.createOrderUseCase, this.secureStorageService)
+    : super(CreateOrderViewModelInitial());
 
   // ================= Controllers =================
 
@@ -47,7 +45,7 @@ class CreateOrderViewModel extends Cubit<CreateOrderViewModelStates> {
 
   DateTime? scheduledDate;
   RequestPriority selectedPriority = RequestPriority.scheduled;
-
+  String? selectedCategoryId;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
@@ -59,6 +57,10 @@ class CreateOrderViewModel extends Cubit<CreateOrderViewModelStates> {
 
   void setScheduledDate(DateTime? date) {
     scheduledDate = date;
+  }
+
+  void setSelectedCategory(String categoryId) {
+    selectedCategoryId = categoryId;
   }
 
   void addImages(List<String> paths) {
@@ -89,7 +91,7 @@ class CreateOrderViewModel extends Cubit<CreateOrderViewModelStates> {
   // ================= Validation + Build =================
 
   Future<Either<CreateOrderValidationError, OrderEntity>>
-      validateAndBuildOrder({
+  validateAndBuildOrder({
     required String? mainCategoryId,
     required String? categoryId,
     required String? subServiceId,
@@ -140,7 +142,7 @@ class CreateOrderViewModel extends Cubit<CreateOrderViewModelStates> {
         id: const Uuid().v4(),
         customerId: customerId,
         mainCategoryId: mainCategoryId,
-        categoryId: categoryId ?? '',
+        categoryId: selectedCategoryId ?? categoryId ?? '',
         subServiceId: subServiceId ?? '',
         title: title ?? '',
         description: description,

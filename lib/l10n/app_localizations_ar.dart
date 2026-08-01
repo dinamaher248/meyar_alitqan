@@ -138,6 +138,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
+  String get emergencyBannerMessage => 'اختيار نوع الطلب يساعدنا في توفير أفضل فني في الوقت المناسب';
+
+  @override
   String get dontHaveAccount => 'لا تمتلك حساب؟';
 
   @override
@@ -294,6 +297,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectRequestType => 'اختر نوع الطلب';
 
   @override
+  String get requestType => 'نوع الطلب';
+
+  @override
   String get scheduled => 'طلب مجدول';
 
   @override
@@ -359,7 +365,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get orderName => 'اسم الطلب';
 
   @override
-  String get serviceName => 'الخدمة';
+  String get serviceName => 'قسم الخدمة';
 
   @override
   String get serviceDate => 'التاريخ';
@@ -543,7 +549,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noPreviousOrders => 'لا يوجد طلبات سابقة';
 
   @override
-  String get ourServiceOffers => 'العروض المتاحة';
+  String get ourServiceOffers => 'العروض  المتاحة';
 
   @override
   String get aboutUsInfo => 'ما تود معرفته عنا';
@@ -798,10 +804,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quantity => 'الكمية';
 
   @override
-  String get description => 'الوصف';
+  String get description => 'وصف المشكلة';
 
   @override
   String get status => 'الحالة';
+
+  @override
+  String get customerReviews => 'اراء العملاء';
+
+  @override
+  String get reviewsCount => 'تقييم';
 
   @override
   String get pending => 'قيد المراجعة';
