@@ -6,6 +6,7 @@ import 'package:meayar_alitqan/features/spare_parts/presentation/manager/get_spa
 
 import '../../../../../core/components/custom_app_bar.dart';
 import '../../../../../core/di/di.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../customer/presentation/manager/cancel_order_view_model/cancel_order_view_model.dart';
 import '../../../shared/domain/entities/order_entity/order_entity.dart';
 import '../widgets/order_details_view_body.dart';
@@ -16,8 +17,10 @@ class OrderDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(title: loc.requestDetails,centerTitle: true,),
       body: SafeArea(
         child: MultiBlocProvider(
           providers: [

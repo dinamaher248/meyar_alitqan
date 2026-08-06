@@ -43,7 +43,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "تفاصيل الطلب",
+                  t.requestDetails,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontSize: RS.font(context, 20),
                     fontWeight: FontWeight.w600,

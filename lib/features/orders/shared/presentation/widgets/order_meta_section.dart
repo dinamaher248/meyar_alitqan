@@ -10,7 +10,7 @@ import '../../../customer/presentation/widgets/order_service_info.dart';
 class OrderMetaSection extends StatelessWidget {
   final String serviceName;
   final String serviceDate;
-  final RequestPriority serviceType; // ✅ enum
+  final RequestPriority serviceType; 
   final bool isTechnician;
 
   const OrderMetaSection({

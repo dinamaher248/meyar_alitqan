@@ -167,7 +167,10 @@
 "addQuestionSheetTitle": "Add your question",
 "addQuestionSheetDescription": "Write your question and we'll reply within 24 hours",
 "writeYourQuestionHint": "Write your question here...",
+"orderStatus": "Order Status",
+"requestDetails": "Request Details",
 "sendButton": "Send",
+"expectedPrice": "Expected Price",
   "completedOrders": "Completed Orders",
   "canceledOrder": "Canceled Orders",
   "poweredBy": "Powered by",
@@ -205,6 +208,7 @@
   "faq_title_pricing": "Pricing & Fees",
   "faq_title_booking": "Booking & Technicians",
   "serviceDetails": "Service Details",
+  "problemDetails":"Problem Details",
   "scheduleDate": "Service Execution Date",
 
 

@@ -480,7 +480,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get writeYourQuestionHint => 'Write your question here...';
 
   @override
+  String get orderStatus => 'Order Status';
+
+  @override
+  String get requestDetails => 'Request Details';
+
+  @override
   String get sendButton => 'Send';
+
+  @override
+  String get expectedPrice => 'Expected Price';
 
   @override
   String get completedOrders => 'Completed Orders';
@@ -592,6 +601,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get serviceDetails => 'Service Details';
+
+  @override
+  String get problemDetails => 'Problem Details';
 
   @override
   String get scheduleDate => 'Service Execution Date';

@@ -6,6 +6,7 @@ import 'package:meayar_alitqan/features/orders/shared/domain/entities/order_enti
 
 import '../../../../../core/di/di.dart';
 import '../../../../../core/helper/order_status_color.dart';
+import '../../../../../core/helper/order_status_icon.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../../technician/presentation/manager/update_order_status_view_model/update_order_status_view_model.dart';
 import 'order_details_card.dart';
@@ -37,9 +38,9 @@ class OrderDetailsList extends StatelessWidget {
             photos: orders[index].images,
             videos: orders[index].videos,
             orderNumber: (index + 1).toString(),
-            publicDetails: AppLocalizations.of(context)!.publicDetails,
+            publicDetails: orders[index].title ?? "", //  AppLocalizations.of(context)!.publicDetails
             statusColor: OrderStatusColor.fromStatus(orders[index].status),
-
+            statusIcon: OrderStatusExtension.icon(orders[index].status),
             serviceName: orders[index].title ?? "",
             serviceDate: DateFormat('dd/MM/yyyy').format(localDate),
             serviceType: orders[index].level,

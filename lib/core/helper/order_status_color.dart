@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:meayar_alitqan/core/utils/colors_manager.dart';
 import '../enums/order_status.dart';
 
 class OrderStatusColor {
   static Color fromStatus(OrderStatus status) {
     switch (status) {
       case OrderStatus.pending:
-        return Colors.grey;
+        return ColorsManager.secondaryColor;
 
       case OrderStatus.assigned:
-        return Colors.blueGrey;
+        return ColorsManager.secondaryColor;
 
       case OrderStatus.onTheWay:
-        return Colors.orange;
+        return ColorsManager.secondaryColor;
 
       case OrderStatus.arrived:
-        return Colors.deepOrange;
+        return ColorsManager.secondaryColor;
 
       case OrderStatus.inProgress:
-        return Colors.blue;
+        return ColorsManager.inProgressColor;
 
       case OrderStatus.completed:
         return Colors.green;

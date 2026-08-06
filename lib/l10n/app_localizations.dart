@@ -1025,11 +1025,29 @@ abstract class AppLocalizations {
   /// **'Write your question here...'**
   String get writeYourQuestionHint;
 
+  /// No description provided for @orderStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Status'**
+  String get orderStatus;
+
+  /// No description provided for @requestDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Details'**
+  String get requestDetails;
+
   /// No description provided for @sendButton.
   ///
   /// In en, this message translates to:
   /// **'Send'**
   String get sendButton;
+
+  /// No description provided for @expectedPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected Price'**
+  String get expectedPrice;
 
   /// No description provided for @completedOrders.
   ///
@@ -1252,6 +1270,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Service Details'**
   String get serviceDetails;
+
+  /// No description provided for @problemDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Problem Details'**
+  String get problemDetails;
 
   /// No description provided for @scheduleDate.
   ///

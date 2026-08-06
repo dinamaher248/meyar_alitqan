@@ -480,7 +480,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get writeYourQuestionHint => 'اكتب سؤالك هنا...';
 
   @override
+  String get orderStatus => 'حالة الطلب';
+
+  @override
+  String get requestDetails => 'تفاصيل الطلب';
+
+  @override
   String get sendButton => 'ارسال';
+
+  @override
+  String get expectedPrice => 'السعر المتوقع';
 
   @override
   String get completedOrders => 'الطلبات المكتمله';
@@ -592,6 +601,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get serviceDetails => 'وصف الخدمه';
+
+  @override
+  String get problemDetails => 'وصف المشكلة';
 
   @override
   String get scheduleDate => 'موعد تنفيذ الخدمة';

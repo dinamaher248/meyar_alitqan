@@ -69,28 +69,38 @@ class _TabItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
-          color: isSelected ? ColorsManager.primaryColor : Colors.transparent,
           duration: const Duration(milliseconds: 250),
           padding: EdgeInsets.symmetric(vertical: RS.size(context, 12)),
-          // decoration: BoxDecoration(
-          //   border: Border.all(
-          //     color: ColorsManager.grey,
-          //     width: RS.size(context, 2),
-          //   ),
-            // color: isSelected ? ColorsManager.primaryColor : Colors.transparent,
-            // borderRadius: BorderRadius.circular(RS.radius(context, 12)),
-          // ),
-          child: Center(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: isSelected
-                    ? ColorsManager.primaryColor
-                    : ColorsManager.black.withValues(alpha: 0.6),
-                fontWeight: FontWeight.bold,
-                fontSize: RS.font(context, 14),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: isSelected
+                        ? ColorsManager.primaryTextDarkColor
+                        : ColorsManager.darkGrey,
+                    fontWeight: FontWeight.w500,
+                    fontSize: RS.font(context, 16),
+                  ),
+                ),
               ),
-            ),
+
+              SizedBox(height: RS.size(context, 8)),
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                height: RS.size(context, 5),
+                width: RS.size(context, 90),
+                decoration: BoxDecoration(
+                 
+                  color: isSelected
+                      ? ColorsManager.primaryColor
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -11,32 +11,38 @@ class OrderHeader extends StatelessWidget {
   final String title;
   final OrderStatus status;
   final Color statusColor;
+  final IconData statusIcon;
 
-  const OrderHeader({super.key, 
+  const OrderHeader({
+    super.key,
     required this.orderNumber,
     required this.title,
     required this.status,
     required this.statusColor,
+    required this.statusIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontSize: RS.font(context, 15),
+                fontWeight: FontWeight.bold,
+                color: ColorsManager.primaryTextDarkColor,
+              ),
+            ),
+            OrderStatusBadge(status: status, color: statusColor,icon: statusIcon),
+          ],
+        ),
+        SizedBox(height: RS.size(context, 8)),
         OrderNumberBadge(orderNumber: orderNumber),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontSize: RS.font(context, 14),
-            fontWeight: FontWeight.bold,
-            color: ColorsManager.primaryColor,
-          ),
-        ),
-        OrderStatusBadge(
-          status: status,
-          color: statusColor,
-        ),
       ],
     );
   }
