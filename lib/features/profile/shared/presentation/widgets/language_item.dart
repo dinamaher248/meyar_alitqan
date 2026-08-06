@@ -21,41 +21,63 @@ class LanguageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(RS.radius(context, 12)),
+      borderRadius: BorderRadius.circular(RS.radius(context, 10)),
       child: Container(
-        padding: EdgeInsets.all(RS.size(context, 12)),
+        padding: EdgeInsets.symmetric(
+          horizontal: RS.size(context, 15),
+          vertical: RS.size(context, 15),
+        ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(RS.radius(context, 12)),
+          borderRadius: BorderRadius.circular(RS.radius(context, 10)),
           border: Border.all(
             color: isSelected
                 ? ColorsManager.primaryColor
                 : Colors.grey.shade300,
-            width: 1.5,
+            width: 2.2,
           ),
-          color: isSelected
-              ? ColorsManager.primaryColor.withOpacity(0.05)
-              : Colors.transparent,
         ),
         child: Row(
           children: [
-            CircleAvatar(
-              radius: RS.radius(context, 18),
-              backgroundColor: Colors.transparent,
-              child: Image.asset(flag, fit: BoxFit.cover),
-            ),
-            SizedBox(width: RS.size(context, 12)),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                fontSize: RS.font(context, 16),
+            Container(
+              width: RS.size(context, 60),
+              height: RS.size(context, 50),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(RS.radius(context, 8)),
+                border: Border.all(
+                  color: Colors.grey.shade300,
+                  width: 1.5,
+                ),
+              ),
+              child: Image.asset(
+                flag,
+                width: RS.size(context, 60),
+                height: RS.size(context, 50),
+                fit: BoxFit.cover,
               ),
             ),
-            const Spacer(),
+            SizedBox(width: RS.size(context, 10)),
+
+            Expanded(
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: RS.font(context, 18),
+                ),
+              ),
+            ),
+
             if (isSelected)
               Icon(
                 Icons.check_circle,
-                color: ColorsManager.primaryColor
+                color: ColorsManager.primaryColor,
+                size: RS.size(context, 30),
+              )
+            else
+              Icon(
+                Icons.circle_outlined,
+                color: ColorsManager.darkGrey.withValues(alpha: 0.7),
+                size: RS.size(context, 30),
               ),
           ],
         ),

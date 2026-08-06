@@ -113,8 +113,8 @@ class RoutesManager {
         );
       case accountSettingsView:
         return MaterialPageRoute(builder: (_) => const AccountSettingsView());
-      case appLanguageView:
-        return MaterialPageRoute(builder: (_) => const AppLanguageView());
+      // case appLanguageView:
+      //   return MaterialPageRoute(builder: (_) => const AppLanguageView());
       case termsAndConditionsView:
         return MaterialPageRoute(
           builder: (_) => const TermsAndConditionsView(),

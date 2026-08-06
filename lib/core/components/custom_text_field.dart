@@ -64,7 +64,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
       enabled: widget.isEnable,
       style: TextStyle(
-        color: widget.isEnable ? Colors.black : Colors.grey.shade600,
+        color:  ColorsManager.secondaryTextDarkColor,
         fontSize: RS.font(context, 14),
         fontWeight: FontWeight.w400,
       ),
@@ -83,7 +83,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
       decoration: InputDecoration(
  errorStyle: TextStyle(
-    fontSize: RS.font(context, 12), // مناسب للويب
+    fontSize: RS.font(context, 12),
     color: Colors.red.shade600,
     fontWeight: FontWeight.w400,
     height: 1.2,

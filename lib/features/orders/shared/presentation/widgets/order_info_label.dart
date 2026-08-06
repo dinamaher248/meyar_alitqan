@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,23 +17,20 @@ class OrderInfoLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SvgPicture.asset(
           icon,
           width: RS.size(context, 12),
+          height: RS.size(context, 12),
+          color: ColorsManager.secondaryTextDarkColor,
         ),
-        SizedBox(width: RS.size(context, 6)),
-
-        Expanded(
-          child: AutoSizeText(
-            label,
-            maxFontSize: RS.font(context, 13),
-            minFontSize: RS.font(context, 8),
-            maxLines: 1,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: ColorsManager.black.withOpacity(0.3),
-            ),
+        SizedBox(width: RS.size(context, 4)),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: RS.font(context, 11),
+            color: ColorsManager.secondaryTextDarkColor,
           ),
         ),
       ],

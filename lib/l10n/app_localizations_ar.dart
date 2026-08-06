@@ -117,10 +117,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phone => 'رقم الهاتف';
 
   @override
-  String get confirm => 'تأكيد';
-
-  @override
-  String get fullName => 'الاسم الكامل';
+  String get fullName => 'الاسم ثنائي';
 
   @override
   String get loginTitle => 'مرحبًا بعودتك';
@@ -405,6 +402,15 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get personalFile => 'الملف الشخصي';
+
+  @override
+  String get ourMainLocation => ' :موقعنا الرئيسي';
+
+  @override
+  String get youCanContactUsBy => 'يمكنكم التواصل معنا عبر: ';
+
+  @override
   String get accountSettings => 'إعدادات الحساب';
 
   @override
@@ -457,6 +463,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get serviceType => 'نوع الخدمه';
+
+  @override
+  String get faqSearchHint => 'ابحث عن سؤالك';
+
+  @override
+  String get addQuestion => 'اضف سؤالك';
+
+  @override
+  String get addQuestionSheetTitle => 'اضف سؤالك';
+
+  @override
+  String get addQuestionSheetDescription => 'اكتب سؤالك وسنقوم بالرد عليك في خلال 24 ساعة الان';
+
+  @override
+  String get writeYourQuestionHint => 'اكتب سؤالك هنا...';
+
+  @override
+  String get sendButton => 'ارسال';
 
   @override
   String get completedOrders => 'الطلبات المكتمله';
@@ -522,7 +546,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get displayCustomerLocation => 'عرض موقع العميل';
 
   @override
-  String get back => 'العوده';
+  String get back => 'رجوع';
 
   @override
   String get serviceNumber => 'الخدمه رقم ';
@@ -808,6 +832,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get status => 'الحالة';
+
+  @override
+  String get deleteAccountAction => 'حذف الحساب';
+
+  @override
+  String get deleteAccountConfirmMessage => 'هل انت متأكد من حذف الحساب؟';
+
+  @override
+  String get confirm => 'تأكيد';
 
   @override
   String get customerReviews => 'اراء العملاء';

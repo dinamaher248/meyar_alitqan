@@ -311,12 +311,6 @@ abstract class AppLocalizations {
   /// **'Phone Number'**
   String get phone;
 
-  /// No description provided for @confirm.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm'**
-  String get confirm;
-
   /// No description provided for @fullName.
   ///
   /// In en, this message translates to:
@@ -875,6 +869,24 @@ abstract class AppLocalizations {
   /// **'{count} photos added'**
   String photosCount(int count);
 
+  /// No description provided for @personalFile.
+  ///
+  /// In en, this message translates to:
+  /// **'personalFile'**
+  String get personalFile;
+
+  /// No description provided for @ourMainLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'ourMainLocation: '**
+  String get ourMainLocation;
+
+  /// No description provided for @youCanContactUsBy.
+  ///
+  /// In en, this message translates to:
+  /// **'You Can Contact Us By: '**
+  String get youCanContactUsBy;
+
   /// No description provided for @accountSettings.
   ///
   /// In en, this message translates to:
@@ -982,6 +994,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Type'**
   String get serviceType;
+
+  /// No description provided for @faqSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for your question'**
+  String get faqSearchHint;
+
+  /// No description provided for @addQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your question'**
+  String get addQuestion;
+
+  /// No description provided for @addQuestionSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your question'**
+  String get addQuestionSheetTitle;
+
+  /// No description provided for @addQuestionSheetDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your question and we\'ll reply within 24 hours'**
+  String get addQuestionSheetDescription;
+
+  /// No description provided for @writeYourQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your question here...'**
+  String get writeYourQuestionHint;
+
+  /// No description provided for @sendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get sendButton;
 
   /// No description provided for @completedOrders.
   ///
@@ -1684,6 +1732,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Status'**
   String get status;
+
+  /// No description provided for @deleteAccountAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccountAction;
+
+  /// No description provided for @deleteAccountConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your account?'**
+  String get deleteAccountConfirmMessage;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
 
   /// No description provided for @customerReviews.
   ///

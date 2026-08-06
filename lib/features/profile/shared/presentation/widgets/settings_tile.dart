@@ -34,24 +34,18 @@ class SettingsTile extends StatelessWidget {
       child: Container(
         margin: isLogout
             ? EdgeInsets.symmetric(
-                vertical: RS.size(context, 50),
-                horizontal: RS.size(context, 16),
+                vertical: RS.size(context, 10),
+                horizontal: RS.size(context, 7),
               )
             : EdgeInsets.symmetric(
-                vertical: RS.size(context, 2),
-                horizontal: RS.size(context, 8),
+                vertical: RS.size(context, 3),
+                horizontal: RS.size(context, 7),
               ),
         padding: EdgeInsets.symmetric(
           vertical: RS.size(context, 15),
-          horizontal: RS.size(context,12),
+          horizontal: RS.size(context, 7),
         ),
-        decoration: BoxDecoration(
-          color: isLogout ? Colors.red.withOpacity(.08) : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-          border: isLogout
-              ? Border.all(color: Colors.red.withOpacity(.4))
-              : null,
-        ),
+       
         child: Row(
           children: [
             // icon
@@ -59,15 +53,17 @@ class SettingsTile extends StatelessWidget {
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: isLogout
-                    ? Colors.red.withOpacity(.15)
-                    : ColorsManager.primaryColor.withOpacity(.15),
+                    ? Colors.red.withValues(alpha: .15)
+                    : ColorsManager.primaryColor.withValues(alpha: .15),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: SvgPicture.asset(
                 icon,
                 height: RS.size(context, 16),
                 width: RS.size(context, 16),
-                color: isLogout ? Colors.red : null,
+                color: isLogout
+                    ? Color(0xffC93000)
+                    : ColorsManager.primaryColor,
               ),
             ),
 
@@ -77,15 +73,18 @@ class SettingsTile extends StatelessWidget {
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: RS.font(context, 14),
-                  color: isLogout ? Colors.red : null,
+                  fontWeight: FontWeight.w500,
+                  fontSize: RS.font(context, 18),
+                  color: isLogout
+                      ? Color(0xffC93000)
+                      : ColorsManager.primaryColor,
                 ),
               ),
             ),
 
-            if (type == SettingsTileType.navigation)
-             _ArrowButton()
+            if (type == SettingsTileType.navigation ||
+                type == SettingsTileType.logout)
+              _ArrowButton(isLogout: isLogout)
             else if (type == SettingsTileType.toggle)
               Switch(
                 value: switchValue ?? false,
@@ -100,10 +99,13 @@ class SettingsTile extends StatelessWidget {
 }
 
 class _ArrowButton extends StatelessWidget {
+  const _ArrowButton({required this.isLogout});
+
+  final bool isLogout;
+
   @override
   Widget build(BuildContext context) {
-    final isRTL =
-        Directionality.of(context) == TextDirection.rtl;
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
 
     return Transform.rotate(
       angle: isRTL ? 3.1416 : 0,
@@ -111,8 +113,8 @@ class _ArrowButton extends StatelessWidget {
         AssetsManager.angleRight,
         width: RS.size(context, 18),
         height: RS.size(context, 18),
+        color: isLogout ? const Color(0xffC93000) : ColorsManager.primaryColor,
       ),
     );
   }
 }
-

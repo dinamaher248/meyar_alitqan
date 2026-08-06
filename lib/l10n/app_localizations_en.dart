@@ -117,9 +117,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phone => 'Phone Number';
 
   @override
-  String get confirm => 'Confirm';
-
-  @override
   String get fullName => 'Full Name';
 
   @override
@@ -405,6 +402,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get personalFile => 'personalFile';
+
+  @override
+  String get ourMainLocation => 'ourMainLocation: ';
+
+  @override
+  String get youCanContactUsBy => 'You Can Contact Us By: ';
+
+  @override
   String get accountSettings => 'Account Settings';
 
   @override
@@ -457,6 +463,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get serviceType => 'Type';
+
+  @override
+  String get faqSearchHint => 'Search for your question';
+
+  @override
+  String get addQuestion => 'Add your question';
+
+  @override
+  String get addQuestionSheetTitle => 'Add your question';
+
+  @override
+  String get addQuestionSheetDescription => 'Write your question and we\'ll reply within 24 hours';
+
+  @override
+  String get writeYourQuestionHint => 'Write your question here...';
+
+  @override
+  String get sendButton => 'Send';
 
   @override
   String get completedOrders => 'Completed Orders';
@@ -808,6 +832,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get status => 'Status';
+
+  @override
+  String get deleteAccountAction => 'Delete Account';
+
+  @override
+  String get deleteAccountConfirmMessage => 'Are you sure you want to delete your account?';
+
+  @override
+  String get confirm => 'Confirm';
 
   @override
   String get customerReviews => 'Customer Reviews';

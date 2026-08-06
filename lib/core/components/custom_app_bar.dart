@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../helper/responsive_size.dart';
 import '../utils/colors_manager.dart';
 
@@ -23,28 +24,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorsManager.primaryColor,
+       backgroundColor: ColorsManager.lightGrey,
       elevation: 0,
       centerTitle: centerTitle,
 
       actions: [
         if (showWatch)
           Padding(
-            padding: EdgeInsets.only(left:  RS.size(context, 16)),
+            padding: EdgeInsets.only(left: RS.size(context, 16)),
             child: Row(
               textDirection: TextDirection.ltr,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.remove_red_eye, color: Colors.white, size:  RS.size(context, 20)),
-                SizedBox(width:  RS.size(context, 4)),
+                Icon(
+                  Icons.remove_red_eye,
+                  color: ColorsManager.primaryColor,
+                  size: RS.size(context, 20),
+                ),
+                SizedBox(width: RS.size(context, 4)),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Text(
                     watchCount,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Colors.white,
+                      color: ColorsManager.primaryColor,
                       fontWeight: FontWeight.bold,
-                      fontSize:  RS.font(context, 18),
+                      fontSize: RS.font(context, 18),
                     ),
                   ),
                 ),
@@ -57,8 +62,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: Colors.white,
-                size:  RS.size(context, 20),
+                color: ColorsManager.primaryColor,
+                size: RS.size(context, 20),
               ),
               onPressed: onBack ?? () => Navigator.pop(context),
             )
@@ -67,7 +72,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title ?? "",
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          color: Colors.white,
+          color: ColorsManager.primaryColor,
           fontWeight: FontWeight.bold,
           fontSize: RS.font(context, 18),
         ),

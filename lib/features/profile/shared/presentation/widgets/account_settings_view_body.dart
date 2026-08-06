@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meayar_alitqan/core/components/dismissible_error_card.dart';
+import 'package:meayar_alitqan/core/utils/colors_manager.dart';
 import 'package:meayar_alitqan/features/profile/shared/presentation/widgets/settings_list.dart';
 import 'package:meayar_alitqan/features/profile/shared/presentation/widgets/show_avatar_picker_sheet.dart';
 import 'package:meayar_alitqan/features/profile/shared/presentation/widgets/user_profile_avatar.dart';
@@ -75,6 +76,7 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   UserProfileAvatar(
+                    isEdit:true,
                     name: user?.fullName,
                     imageUrl: user?.avatarUrl,
                     onChange: () {
@@ -109,10 +111,12 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   Text(
                     AppLocalizations.of(context)!.fullName,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: RS.font(context, 18),
-                      fontWeight: FontWeight.bold,
+                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.primaryColor
                     ),
                   ),
+                  
                   SizedBox(height: RS.size(context, 16)),
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context)!.fullName,
@@ -128,7 +132,7 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   ),
                   SizedBox(height: RS.size(context, 16)),
                   CustomTextFormField(
-                    isEnable: false,
+                    // isEnable: false,
                     hintText: AppLocalizations.of(context)!.email,
                     textEditingController: TextEditingController(
                       text: viewModel.email,
@@ -145,6 +149,19 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   SizedBox(height: RS.size(context, 16)),
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context)!.phone,
+                    textEditingController: phoneController,
+                  ),
+                   SizedBox(height: RS.size(context, 24)),
+                  Text(
+                    AppLocalizations.of(context)!.location,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: RS.font(context, 18),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: RS.size(context, 16)),
+                  CustomTextFormField(
+                    hintText: AppLocalizations.of(context)!.locationHint,
                     textEditingController: phoneController,
                   ),
                   SizedBox(height: RS.size(context, 70)),
@@ -172,7 +189,7 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
 
                         context
                             .read<AppUserCubit>()
-                            .refreshUser(); // 👈 هنا الصح
+                            .refreshUser();
                         Navigator.pop(context);
                       }
                     },
@@ -273,54 +290,50 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   ),
                   SizedBox(height: RS.size(context, 16)),
 
-                  BlocListener<
-                    DeleteAccountViewModel,
-                    DeleteAccountViewModelStates
-                  >(
-                    listener: (context, state) async {
-                      if (state is DeleteAccountViewModelLoading) {}
+                  // BlocListener<
+                  //   DeleteAccountViewModel,
+                  //   DeleteAccountViewModelStates
+                  // >(
+                  //   listener: (context, state) async {
+                  //     if (state is DeleteAccountViewModelLoading) {}
 
-                      if (state is DeleteAccountViewModelError) {
-                        showTemporaryMessage(
-                          context,
-                          state.message,
-                          MessageType.error,
-                        );
-                      }
+                  //     if (state is DeleteAccountViewModelError) {
+                  //       showTemporaryMessage(
+                  //         context,
+                  //         state.message,
+                  //         MessageType.error,
+                  //       );
+                  //     }
 
-                      if (state is DeleteAccountViewModelSuccess) {
-                        // 1️⃣ Sign out من Supabase
-                        await Supabase.instance.client.auth.signOut();
+                  //     if (state is DeleteAccountViewModelSuccess) {
+                  //       await Supabase.instance.client.auth.signOut();
 
-                        // 2️⃣ امسح المستخدم من AppUserCubit
-                        context.read<AppUserCubit>().clearUser();
+                  //       context.read<AppUserCubit>().clearUser();
 
-                        // 3️⃣ روح على Login
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          RoutesManager.splash,
-                          (route) => false,
-                        );
+                  //       Navigator.of(context).pushNamedAndRemoveUntil(
+                  //         RoutesManager.splash,
+                  //         (route) => false,
+                  //       );
 
-                        // 4️⃣ رسالة تأكيد
-                        showTemporaryMessage(
-                          context,
-                          AppLocalizations.of(
-                            context,
-                          )!.accountDeletedSuccessfully,
-                          MessageType.success,
-                        );
-                      }
-                    },
-                    child: InkWell(
-                      onTap: () {
-                        _showDeleteConfirmation(context);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: _deleteAccountButton(context),
-                      ),
-                    ),
-                  ),
+                  //       showTemporaryMessage(
+                  //         context,
+                  //         AppLocalizations.of(
+                  //           context,
+                  //         )!.accountDeletedSuccessfully,
+                  //         MessageType.success,
+                  //       );
+                  //     }
+                  //   },
+                  //   child: InkWell(
+                  //     onTap: () {
+                  //       _showDeleteConfirmation(context);
+                  //     },
+                  //     child: Padding(
+                  //       padding: const EdgeInsets.all(8.0),
+                  //       child: _deleteAccountButton(context),
+                  //     ),
+                  //   ),
+                  // ),
 
                 ],
               ),
@@ -383,4 +396,27 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
       ),
     );
   }
+
+  Widget _buildLabeledField(
+  BuildContext context, {
+  required String label,
+  required TextEditingController controller,
+  bool isEnable = true,
+}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        label,
+        style: TextStyle(fontSize: RS.font(context, 13), color: Colors.grey.shade600),
+      ),
+      SizedBox(height: RS.size(context, 6)),
+      CustomTextFormField(
+        hintText: label,
+        textEditingController: controller,
+        isEnable: isEnable,
+      ),
+    ],
+  );
+}
 }

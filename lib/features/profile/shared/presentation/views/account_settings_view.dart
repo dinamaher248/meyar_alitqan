@@ -16,7 +16,8 @@ class AccountSettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppLocalizations.of(context)!.accountSettings,
+        title: AppLocalizations.of(context)!.personalFile,
+        centerTitle: true,
       ),
       body: MultiBlocProvider(
         providers: [

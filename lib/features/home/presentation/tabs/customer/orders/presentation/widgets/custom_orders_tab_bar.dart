@@ -27,7 +27,7 @@ class CustomOrdersTabBar extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(RS.size(context, 4)),
       decoration: BoxDecoration(
-        color: ColorsManager.grey.withOpacity(0.2),
+        color: ColorsManager.grey.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(RS.radius(context, 12)),
       ),
       child: Row(
@@ -69,23 +69,24 @@ class _TabItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: AnimatedContainer(
+          color: isSelected ? ColorsManager.primaryColor : Colors.transparent,
           duration: const Duration(milliseconds: 250),
           padding: EdgeInsets.symmetric(vertical: RS.size(context, 12)),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: ColorsManager.grey,
-              width: RS.size(context, 2),
-            ),
-            color: isSelected ? ColorsManager.primaryColor : Colors.transparent,
-            borderRadius: BorderRadius.circular(RS.radius(context, 12)),
-          ),
+          // decoration: BoxDecoration(
+          //   border: Border.all(
+          //     color: ColorsManager.grey,
+          //     width: RS.size(context, 2),
+          //   ),
+            // color: isSelected ? ColorsManager.primaryColor : Colors.transparent,
+            // borderRadius: BorderRadius.circular(RS.radius(context, 12)),
+          // ),
           child: Center(
             child: Text(
               title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: isSelected
-                    ? Colors.white
-                    : ColorsManager.black.withOpacity(0.6),
+                    ? ColorsManager.primaryColor
+                    : ColorsManager.black.withValues(alpha: 0.6),
                 fontWeight: FontWeight.bold,
                 fontSize: RS.font(context, 14),
               ),

@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-enum SettingsTileType {
-  navigation,
-  toggle,
-  logout,
-}
+enum SettingsTileType { navigation, toggle, logout }
 
 class SettingsItemModel {
   final String title;
