@@ -498,6 +498,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get canceledOrder => 'Canceled Orders';
 
   @override
+  String get newOrders => 'New Orders';
+
+  @override
+  String get recentOrders => 'Recent Orders';
+
+  @override
+  String get oldOrders => 'Old Orders';
+
+  @override
   String get poweredBy => 'Powered by';
 
   @override
@@ -511,6 +520,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get order_status_arrived => 'Arrived';
+
+  @override
+  String get todaySummary => 'Today\'s Summary';
+
+  @override
+  String get completedLabel => 'Completed';
+
+  @override
+  String get todayOrdersLabel => 'Today\'s Orders';
+
+  @override
+  String get profitLabel => 'Profit';
+
+  @override
+  String get noOrdersDescription => 'You\'ll be notified when a new order arrives';
+
+  @override
+  String get browseNewOrders => 'Browse New Orders';
+
+  @override
+  String get upcomingOrders => 'Upcoming Orders';
 
   @override
   String get order_status_inProgress => 'In progress';

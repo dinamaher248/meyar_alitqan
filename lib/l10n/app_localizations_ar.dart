@@ -498,6 +498,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get canceledOrder => 'الطلبات الملغاه';
 
   @override
+  String get newOrders => 'الطلبات الجديدة';
+
+  @override
+  String get recentOrders => 'الطلبات الحالية';
+
+  @override
+  String get oldOrders => 'الطلبات السابقة';
+
+  @override
   String get poweredBy => 'بدعم من';
 
   @override
@@ -511,6 +520,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get order_status_arrived => 'تم الوصول';
+
+  @override
+  String get todaySummary => 'ملخص اليوم';
+
+  @override
+  String get completedLabel => 'المكتمله';
+
+  @override
+  String get todayOrdersLabel => 'طلبات اليوم';
+
+  @override
+  String get profitLabel => 'الأرباح';
+
+  @override
+  String get noOrdersDescription => 'سيتم اشعارك عند وصول طلب جديد';
+
+  @override
+  String get browseNewOrders => 'تصفح الطلبات الجديده';
+
+  @override
+  String get upcomingOrders => 'الطلبات القادمة';
 
   @override
   String get order_status_inProgress => 'جاري التنفيذ';

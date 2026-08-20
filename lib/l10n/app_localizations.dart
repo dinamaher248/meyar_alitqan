@@ -1061,6 +1061,24 @@ abstract class AppLocalizations {
   /// **'Canceled Orders'**
   String get canceledOrder;
 
+  /// No description provided for @newOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'New Orders'**
+  String get newOrders;
+
+  /// No description provided for @recentOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Orders'**
+  String get recentOrders;
+
+  /// No description provided for @oldOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Old Orders'**
+  String get oldOrders;
+
   /// No description provided for @poweredBy.
   ///
   /// In en, this message translates to:
@@ -1090,6 +1108,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arrived'**
   String get order_status_arrived;
+
+  /// No description provided for @todaySummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Summary'**
+  String get todaySummary;
+
+  /// No description provided for @completedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completedLabel;
+
+  /// No description provided for @todayOrdersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Orders'**
+  String get todayOrdersLabel;
+
+  /// No description provided for @profitLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get profitLabel;
+
+  /// No description provided for @noOrdersDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll be notified when a new order arrives'**
+  String get noOrdersDescription;
+
+  /// No description provided for @browseNewOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse New Orders'**
+  String get browseNewOrders;
+
+  /// No description provided for @upcomingOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming Orders'**
+  String get upcomingOrders;
 
   /// No description provided for @order_status_inProgress.
   ///

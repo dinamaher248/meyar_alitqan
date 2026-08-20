@@ -11,7 +11,7 @@ class CustomOrdersTabBar extends StatelessWidget {
   final int? previousOrdersCount;
   final String? currentOrdersLabel;
   final String? previousOrdersLabel;
-
+  final bool isTechnician;
   const CustomOrdersTabBar({
     super.key,
     required this.selectedIndex,
@@ -20,6 +20,7 @@ class CustomOrdersTabBar extends StatelessWidget {
     this.previousOrdersCount = 0,
     this.currentOrdersLabel,
     this.previousOrdersLabel,
+    this.isTechnician = false,
   });
 
   @override
@@ -33,19 +34,28 @@ class CustomOrdersTabBar extends StatelessWidget {
       child: Row(
         children: [
           _TabItem(
-            title:
-                currentOrdersLabel ??
-                AppLocalizations.of(context)!.currentServices,
+            title: isTechnician
+                ? AppLocalizations.of(context)!.newOrders
+                : currentOrdersLabel ??
+                      AppLocalizations.of(context)!.currentServices,
             isSelected: selectedIndex == 0,
             onTap: () => onTabChanged(0),
           ),
           _TabItem(
-            title:
-                previousOrdersLabel ??
-                AppLocalizations.of(context)!.previousServices,
+            title: isTechnician
+                ? AppLocalizations.of(context)!.recentOrders
+                : previousOrdersLabel ??
+                      AppLocalizations.of(context)!.previousServices,
             isSelected: selectedIndex == 1,
             onTap: () => onTabChanged(1),
           ),
+          isTechnician
+              ? _TabItem(
+                  title: AppLocalizations.of(context)!.oldOrders,
+                  isSelected: selectedIndex == 2,
+                  onTap: () => onTabChanged(2),
+                )
+              : SizedBox(),
         ],
       ),
     );
@@ -93,11 +103,13 @@ class _TabItem extends StatelessWidget {
                 height: RS.size(context, 5),
                 width: RS.size(context, 90),
                 decoration: BoxDecoration(
-                 
                   color: isSelected
                       ? ColorsManager.primaryColor
                       : Colors.transparent,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
                 ),
               ),
             ],

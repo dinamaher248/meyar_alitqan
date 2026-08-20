@@ -19,8 +19,7 @@ class TechnicianJobsTabViewBody extends StatefulWidget {
       _TechnicianJobsTabViewBodyState();
 }
 
-class _TechnicianJobsTabViewBodyState
-    extends State<TechnicianJobsTabViewBody> {
+class _TechnicianJobsTabViewBodyState extends State<TechnicianJobsTabViewBody> {
   int selectedTab = 0;
 
   @override
@@ -40,38 +39,39 @@ class _TechnicianJobsTabViewBodyState
         child: Column(
           children: [
             CustomOrdersTabBar(
-              currentOrdersLabel: t.completedOrders,
-              previousOrdersLabel: t.canceledOrder,
+              
+              isTechnician: true,
+              currentOrdersLabel: t.newOrders,
+              previousOrdersLabel: t.recentOrders,
               selectedIndex: selectedTab,
               onTabChanged: (index) {
                 setState(() => selectedTab = index);
-        
-                final vm =
-                context.read<GetTechnicianOrdersViewModel>();
-        
+
+                final vm = context.read<GetTechnicianOrdersViewModel>();
+
                 if (index == 0) {
-                  vm.getCompletedOrders();
+                  vm.getTechnicianOrders(); 
+                } else if (index == 1) {
+                  vm.getTechnicianOrders(); 
                 } else {
-                  vm.getCanceledOrders();
+                  vm.getArchivedTechnicianOrders();
                 }
               },
             ),
-        
+
             const SizedBox(height: 24),
-        
+
             BlocBuilder<
-                GetTechnicianOrdersViewModel,
-                GetTechnicianOrdersViewModelStates>(
+              GetTechnicianOrdersViewModel,
+              GetTechnicianOrdersViewModelStates
+            >(
               builder: (context, state) {
-                if (state
-                is GetTechnicianOrdersViewModelLoading) {
-                  return const Center(
-                    child: CupertinoActivityIndicator(),
-                  );
+                if (state is GetTechnicianOrdersViewModelLoading) {
+                  return const Center(child: CupertinoActivityIndicator());
                 }
-        
-                if (state
-                is GetTechnicianOrdersViewModelSuccess) {
+
+                if (state is GetTechnicianOrdersViewModelSuccess) {
+                  
                   if (state.orders.isEmpty) {
                     return SizedBox(
                       height: MediaQuery.of(context).size.height * 0.6,
@@ -89,31 +89,30 @@ class _TechnicianJobsTabViewBodyState
                           SizedBox(height: RS.size(context, 16)),
                           Text(
                             AppLocalizations.of(context)!.noCurrentOrders,
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontSize: RS.font(context, 20),
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.titleLarge
+                                ?.copyWith(
+                                  fontSize: RS.font(context, 20),
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ],
                       ),
                     );
                   }
-        
+
                   return WebMaxWidth(
                     child: OrderDetailsList(
+                      isNewRequest: true,
                       orders: state.orders,
                       isTechnician: true,
                     ),
                   );
                 }
-        
-                if (state
-                is GetTechnicianOrdersViewModelError) {
-                  return Center(
-                    child: Text(state.message),
-                  );
+
+                if (state is GetTechnicianOrdersViewModelError) {
+                  return Center(child: Text(state.message));
                 }
-        
+
                 return const SizedBox.shrink();
               },
             ),

@@ -12,9 +12,11 @@ class OrderHeader extends StatelessWidget {
   final OrderStatus status;
   final Color statusColor;
   final IconData statusIcon;
+  final bool isTechnician;
 
   const OrderHeader({
     super.key,
+    required this.isTechnician,
     required this.orderNumber,
     required this.title,
     required this.status,
@@ -35,14 +37,22 @@ class OrderHeader extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontSize: RS.font(context, 15),
                 fontWeight: FontWeight.bold,
-                color: ColorsManager.primaryTextDarkColor,
+                color: isTechnician
+                    ? ColorsManager.white
+                    : ColorsManager.primaryTextDarkColor,
               ),
             ),
-            OrderStatusBadge(status: status, color: statusColor,icon: statusIcon),
+            OrderStatusBadge(
+              status: status,
+              color: statusColor,
+              icon: statusIcon,
+            ),
           ],
         ),
         SizedBox(height: RS.size(context, 8)),
-        OrderNumberBadge(orderNumber: orderNumber),
+        OrderNumberBadge(orderNumber: orderNumber,
+          isTechnician: isTechnician,
+        ),
       ],
     );
   }

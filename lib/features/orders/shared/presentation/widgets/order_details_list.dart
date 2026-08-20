@@ -16,10 +16,12 @@ class OrderDetailsList extends StatelessWidget {
     super.key,
     required this.orders,
     this.isTechnician = false,
+    this.isNewRequest = false,
   });
 
   final List<OrderEntity> orders;
   final bool isTechnician;
+  final bool isNewRequest;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class OrderDetailsList extends StatelessWidget {
             serviceType: orders[index].level,
             order: orders[index],
             isTechnician: isTechnician,
+            isNewRequest: isNewRequest,
           ),
         );
       },

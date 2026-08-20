@@ -9,11 +9,13 @@ import '../../../../../core/di/di.dart';
 import '../../../../../l10n/app_localizations.dart';
 import '../../../customer/presentation/manager/cancel_order_view_model/cancel_order_view_model.dart';
 import '../../../shared/domain/entities/order_entity/order_entity.dart';
+import '../manager/update_order_status_view_model/update_order_status_view_model.dart';
 import '../widgets/order_details_view_body.dart';
 
 class OrderDetailsView extends StatelessWidget {
-  const OrderDetailsView({super.key, required this.order});
+  const OrderDetailsView({super.key, required this.order, this.isTechnician = false, });
   final OrderEntity order;
+  final bool isTechnician;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,8 @@ class OrderDetailsView extends StatelessWidget {
         child: MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => getIt<CancelOrderViewModel>()),
+             BlocProvider(
+              create: (context) => getIt<UpdateOrderStatusViewModel>(),  ),
             BlocProvider(
               create: (_) => getIt<GetSparePartViewModel>()..getSparePart(
                 order.id
@@ -32,7 +36,7 @@ class OrderDetailsView extends StatelessWidget {
             ),
             BlocProvider(create: (context) => getIt<GetInvoiceViewModel>()..getInvoice(order.id)),
           ],
-          child: WebMaxWidth(child: OrderDetailsViewBody(orderEntity: order)),
+          child: WebMaxWidth(child: OrderDetailsViewBody(orderEntity: order,isTechnician: isTechnician)),
         ),
       ),
     );

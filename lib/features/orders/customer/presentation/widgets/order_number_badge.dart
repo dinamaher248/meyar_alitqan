@@ -5,8 +5,9 @@ import '../../../../../core/utils/colors_manager.dart';
 
 class OrderNumberBadge extends StatelessWidget {
   final String orderNumber;
+  final bool isTechnician;
 
-  const OrderNumberBadge({super.key, required this.orderNumber});
+  const OrderNumberBadge({super.key, required this.orderNumber, required this.isTechnician});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class OrderNumberBadge extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontSize: RS.font(context, 14),
             fontWeight: FontWeight.w400,
-            color: ColorsManager.darkGrey,
+            color: isTechnician ? ColorsManager.white : ColorsManager.darkGrey,
           ),
     );
   }
