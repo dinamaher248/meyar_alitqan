@@ -113,7 +113,7 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: RS.font(context, 16),
                       fontWeight: FontWeight.w500,
-                      color: ColorsManager.primaryColor
+                      color: ColorsManager.primaryTextDarkColor
                     ),
                   ),
                   
@@ -125,9 +125,10 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   SizedBox(height: RS.size(context, 24)),
                   Text(
                     AppLocalizations.of(context)!.email,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: RS.font(context, 18),
-                      fontWeight: FontWeight.bold,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.primaryTextDarkColor
                     ),
                   ),
                   SizedBox(height: RS.size(context, 16)),
@@ -141,9 +142,10 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                   SizedBox(height: RS.size(context, 24)),
                   Text(
                     AppLocalizations.of(context)!.phone,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: RS.font(context, 18),
-                      fontWeight: FontWeight.bold,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.primaryTextDarkColor
                     ),
                   ),
                   SizedBox(height: RS.size(context, 16)),
@@ -154,9 +156,10 @@ class _AccountSettingsViewBodyState extends State<AccountSettingsViewBody> {
                    SizedBox(height: RS.size(context, 24)),
                   Text(
                     AppLocalizations.of(context)!.location,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontSize: RS.font(context, 18),
-                      fontWeight: FontWeight.bold,
+                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontSize: RS.font(context, 16),
+                      fontWeight: FontWeight.w500,
+                      color: ColorsManager.primaryTextDarkColor
                     ),
                   ),
                   SizedBox(height: RS.size(context, 16)),

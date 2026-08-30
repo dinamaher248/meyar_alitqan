@@ -83,9 +83,9 @@ class CustomerAccountTabViewBody extends StatelessWidget {
               SizedBox(height: RS.size(context, 16)),
 
               /// ===== Header =====
-              HeaderPages(title: loc.personalFile),
+              // HeaderPages(title: loc.personalFile),
 
-              SizedBox(height: RS.size(context, 20)),
+              // SizedBox(height: RS.size(context, 20)),
 
               /// ================= AVATAR =================
               UserProfileAvatar(

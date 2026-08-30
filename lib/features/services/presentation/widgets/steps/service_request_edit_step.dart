@@ -52,7 +52,7 @@ class _ServiceRequestEditStepState extends State<ServiceRequestEditStep> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "تعديل الطلب",
+                  t.editOrder,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: RS.font(context, 20),
@@ -186,7 +186,7 @@ class _ServiceRequestEditStepState extends State<ServiceRequestEditStep> {
                 SizedBox(height: RS.size(context, 16)),
 
                 /// ===== نوع الطلب =====
-                SectionLabel("نوع الطلب"),
+                SectionLabel(t.orderType),
                 PriorityRadioTile(
                   label: t.scheduled,
                   value: RequestPriority.scheduled,
@@ -209,7 +209,7 @@ class _ServiceRequestEditStepState extends State<ServiceRequestEditStep> {
                 SizedBox(height: RS.size(context, 16)),
 
                 /// ===== وصف المشكلة =====
-                SectionLabel("وصف المشكله"),
+                SectionLabel(t.problemDetails),
                 CustomTextFormField(
                   textEditingController: orderVM.descriptionController,
                   hintText: t.writeRequestDetailsHint,
@@ -240,7 +240,7 @@ class _ServiceRequestEditStepState extends State<ServiceRequestEditStep> {
             vertical: RS.size(context, 10),
           ),
           child: CustomButton(
-            text: "حفظ التعديلات",
+            text: t.saveChanges,
             onPressed: widget.onSave,
           ),
         ),

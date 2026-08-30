@@ -10,6 +10,7 @@ import '../../../../../../../../l10n/app_localizations.dart';
 import '../../../../../../../banners/presentation/manager/get_banners_view_model/get_banners_view_model.dart';
 import '../../../../../../../banners/presentation/manager/get_banners_view_model/get_banners_view_model_states.dart';
 import '../../../../../../../services/domain/entities/service_offer_entity.dart';
+import '../../../../../../../services/presentation/views/customer_services_tab_view.dart';
 import '../../../../../../../services/presentation/widgets/main_categories_list_view.dart';
 import '../../../../../../../services/presentation/widgets/service_offer_card.dart';
 import '../../../../shared/widgets/home_header.dart';
@@ -112,7 +113,6 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
 
                   if (maintenanceBanner.isNotEmpty) {
                     final banner = maintenanceBanner.first;
-
                     return Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: RS.size(context, 16),
@@ -141,12 +141,23 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
                       color: ColorsManager.primaryTextDarkColor,
                     ),
                   ),
-                  Text(
-                    "عرض المزيد",
-                    style: TextStyle(
-                      fontSize: RS.font(context, 14),
-                      fontWeight: FontWeight.w500,
-                      color: ColorsManager.primaryColor,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CustomerServicesTabView(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      loc.showMore,
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: RS.font(context, 14),
+                        fontWeight: FontWeight.w500,
+                        color: ColorsManager.primaryColor,
+                      ),
                     ),
                   ),
                 ],
@@ -177,8 +188,9 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
                     ),
                   ),
                   Text(
-                    "عرض المزيد",
+                    loc.showMore,
                     style: TextStyle(
+                       decoration: TextDecoration.underline,
                       fontSize: RS.font(context, 14),
                       fontWeight: FontWeight.w500,
                       color: ColorsManager.primaryColor,
@@ -224,28 +236,60 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
             //     return const SizedBox.shrink();
             //   },
             // ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: _staticOffers.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: RS.size(context, 12),
-                  mainAxisSpacing: RS.size(context, 12),
-                  childAspectRatio: 0.78,
-                ),
-                itemBuilder: (context, index) {
-                  final offer = _staticOffers[index];
-                  return ServiceOfferCard(
-                    offer: offer,
-                    isOffer: true,
-                    onTap: () {},
-                    onBookNow: () {},
-                  );
-                },
-              ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                const int crossAxisCount = 2;
+                final double spacing = RS.size(context, 12);
+                final double horizontalPadding = RS.size(context, 16) * 2;
+
+                final double availableWidth =
+                    MediaQuery.of(context).size.width - horizontalPadding;
+                final double cardWidth =
+                    (availableWidth - spacing * (crossAxisCount - 1)) /
+                    crossAxisCount;
+
+                // ارتفاع الصورة (نفس AspectRatio: 16/11 بالكارت بالظبط)
+                final double imageHeight = cardWidth * 11 / 16;
+
+                // ارتفاع بلوك النص + الزر تحت الصورة (نفس المقاسات الموجودة جوا الكارت بالظبط)
+                final double textBlockHeight =
+                    RS.size(context, 10) * 2 + // padding فوق وتحت
+                    (RS.font(context, 16) * 1.3) + // سطر العنوان
+                    RS.size(context, 4) + // مسافة
+                    RS.size(context, 20) + // صف التقييم (نص + نجمة + وصف)
+                    RS.size(context, 10) + // مسافة قبل الزر
+                    RS.size(context, 8) * 2 + // padding عمودي بالزر
+                    (RS.font(context, 14) * 1.3) + // سطر نص الزر
+                    RS.size(context, 8); // هامش أمان إضافي
+
+                final double cardHeight = imageHeight + textBlockHeight;
+
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: RS.size(context, 16),
+                  ),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: _staticOffers.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: spacing,
+                      mainAxisSpacing: spacing,
+                      mainAxisExtent: cardHeight, // بدل childAspectRatio
+                    ),
+                    itemBuilder: (context, index) {
+                      final offer = _staticOffers[index];
+                      return ServiceOfferCard(
+                        offer: offer,
+                        isOffer: true,
+                        onTap: () {},
+                        onBookNow: () {},
+                      );
+                    },
+                  ),
+                );
+              },
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
@@ -261,7 +305,7 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
                     ),
                   ),
                   Text(
-                    "عرض المزيد",
+                    loc.showMore,
                     style: TextStyle(
                       fontSize: RS.font(context, 14),
                       fontWeight: FontWeight.w500,
@@ -273,28 +317,79 @@ class _CustomerHomeMobileLayoutState extends State<CustomerHomeMobileLayout> {
             ),
 
             SizedBox(height: RS.size(context, 12)),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
-              child: GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: _staticOffers.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: RS.size(context, 12),
-                  mainAxisSpacing: RS.size(context, 12),
-                  childAspectRatio: 0.98,
-                ),
-                itemBuilder: (context, index) {
-                  final offer = _staticOffers[index];
-                  return ServiceOfferCard(
-                    offer: offer,
-                    onTap: () {},
-                    onBookNow: () {},
-                  );
-                },
-              ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                const int crossAxisCount = 2;
+                final double spacing = RS.size(context, 12);
+                final double horizontalPadding = RS.size(context, 16) * 2;
+
+                final double availableWidth =
+                    MediaQuery.of(context).size.width - horizontalPadding;
+                final double cardWidth =
+                    (availableWidth - spacing * (crossAxisCount - 1)) /
+                    crossAxisCount;
+
+                // ارتفاع الصورة (نفس AspectRatio: 16/11 بالكارت بالظبط)
+                final double imageHeight = cardWidth * 11 / 16;
+
+                // ارتفاع بلوك النص + الزر تحت الصورة (نفس المقاسات الموجودة جوا الكارت بالظبط)
+                final double textBlockHeight =
+                    RS.size(context, 10) * 2 + // padding فوق وتحت
+                    (RS.font(context, 16) * 1.3) + // سطر العنوان
+                    RS.size(context, 4) + // مسافة
+                    RS.size(context, 20) + // صف التقييم (نص + نجمة + وصف)
+                    (RS.font(context, 14) * 1.3);
+
+                final double cardHeight = imageHeight + textBlockHeight;
+
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: RS.size(context, 16),
+                  ),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: _staticOffers.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: spacing,
+                      mainAxisSpacing: spacing,
+                      mainAxisExtent: cardHeight, // بدل childAspectRatio
+                    ),
+                    itemBuilder: (context, index) {
+                      final offer = _staticOffers[index];
+                      return ServiceOfferCard(
+                        offer: offer,
+                        onTap: () {},
+                        onBookNow: () {},
+                      );
+                    },
+                  ),
+                );
+              },
             ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: RS.size(context, 16)),
+            //   child: GridView.builder(
+            //     shrinkWrap: true,
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     itemCount: _staticOffers.length,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: 2,
+            //       crossAxisSpacing: RS.size(context, 12),
+            //       mainAxisSpacing: RS.size(context, 12),
+            //       childAspectRatio: 0.98,
+            //     ),
+            //     itemBuilder: (context, index) {
+            //       final offer = _staticOffers[index];
+            //       return ServiceOfferCard(
+            //         offer: offer,
+            //         onTap: () {},
+            //         onBookNow: () {},
+            //       );
+            //     },
+            //   ),
+            // ),
 
             // BlocBuilder<GetBannersViewModel, GetBannersViewModelStates>(
             //   builder: (context, state) {

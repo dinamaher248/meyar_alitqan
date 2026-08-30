@@ -68,6 +68,7 @@ class AssetsManager {
   static const String questions = '$iconsBaseUrl/question.svg';
   static const String logout = '$iconsBaseUrl/logout.svg';
   static const String settings = '$iconsBaseUrl/settings.svg';
+  static const String reports = '$iconsBaseUrl/reports.svg';
   static const String done = '$iconsBaseUrl/done.svg';
   static const String deleteAccount = '$iconsBaseUrl/delete-user.svg';
   static const String location = '$iconsBaseUrl/location.svg';

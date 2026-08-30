@@ -7,17 +7,23 @@ class OrderNumberBadge extends StatelessWidget {
   final String orderNumber;
   final bool isTechnician;
 
-  const OrderNumberBadge({super.key, required this.orderNumber, required this.isTechnician});
+  const OrderNumberBadge({
+    super.key,
+    required this.orderNumber,
+    required this.isTechnician,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       "#1220-129-$orderNumber",
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontSize: RS.font(context, 14),
-            fontWeight: FontWeight.w400,
-            color: isTechnician ? ColorsManager.white : ColorsManager.darkGrey,
-          ),
+        fontSize: RS.font(context, 14),
+        fontWeight: FontWeight.w400,
+        color: isTechnician ? ColorsManager.white : ColorsManager.darkGrey,
+      ),
     );
   }
 }

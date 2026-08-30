@@ -15,12 +15,12 @@ class AuthHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, top: 12),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back_ios, size: RS.size(context, 20)),
-          ),
+          // IconButton(
+          //   onPressed: () => Navigator.pop(context),
+          //   icon: Icon(Icons.arrow_back_ios, size: RS.size(context, 20)),
+          // ),
           _LanguageSwitcher(),
         ],
       ),

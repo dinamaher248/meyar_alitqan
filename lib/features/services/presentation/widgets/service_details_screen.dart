@@ -55,7 +55,6 @@ class ServiceDetailsScreen extends StatelessWidget {
 
   final List<ServiceReview> reviews;
 
-  /// Fully formatted price text, e.g. "300-400 دينار" or "200 دينار"
   final String priceText;
 
   /// e.g. "اطلب الخدمة" or "اطلب العرض"

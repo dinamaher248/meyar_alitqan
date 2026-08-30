@@ -276,6 +276,132 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search for services.....';
 
   @override
+  String get chooseSuitableService => 'Choose the service that suits you';
+
+  @override
+  String get currencyDinar => 'Dinar';
+
+  @override
+  String get satisfiedCustomers => 'satisfied customers';
+
+  @override
+  String get by => 'By';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get orderType => 'Order Type';
+
+  @override
+  String get booking => 'Booking';
+
+  @override
+  String get confirmation => 'Confirmation';
+
+  @override
+  String get createOrder => 'Create Order';
+
+  @override
+  String get orderSection => 'Order Section';
+
+  @override
+  String get addMedia => 'Add images or videos showing the issue (Optional)';
+
+  @override
+  String get january => 'January';
+
+  @override
+  String get february => 'February';
+
+  @override
+  String get march => 'March';
+
+  @override
+  String get april => 'April';
+
+  @override
+  String get may => 'May';
+
+  @override
+  String get june => 'June';
+
+  @override
+  String get july => 'July';
+
+  @override
+  String get august => 'August';
+
+  @override
+  String get september => 'September';
+
+  @override
+  String get october => 'October';
+
+  @override
+  String get november => 'November';
+
+  @override
+  String get december => 'December';
+
+  @override
+  String get chooseTime => 'Choose Time';
+
+  @override
+  String get saturday => 'Saturday';
+
+  @override
+  String get sunday => 'Sunday';
+
+  @override
+  String get monday => 'Monday';
+
+  @override
+  String get tuesday => 'Tuesday';
+
+  @override
+  String get wednesday => 'Wednesday';
+
+  @override
+  String get thursday => 'Thursday';
+
+  @override
+  String get friday => 'Friday';
+
+  @override
+  String get am => 'AM';
+
+  @override
+  String get pm => 'PM';
+
+  @override
+  String get editOrder => 'Edit Order';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get costSummary => 'Cost Summary';
+
+  @override
+  String get urgentOrderFee => 'Urgent Order Fee';
+
+  @override
+  String get expectedTotal => 'Estimated Total';
+
+  @override
+  String get uploadedMedia => 'uploaded';
+
+  @override
+  String get images => 'images';
+
+  @override
+  String get video => 'videos';
+
+  @override
+  String get and => 'and';
+
+  @override
   String get categories => 'Services Section';
 
   @override
@@ -402,7 +528,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get personalFile => 'personalFile';
+  String get personalFile => 'Personal File';
 
   @override
   String get ourMainLocation => 'ourMainLocation: ';
@@ -898,6 +1024,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rejected => 'Rejected';
+
+  @override
+  String get reports => 'Reports';
+
+  @override
+  String get totalProfitsThisWeek => 'Total profits this week';
+
+  @override
+  String get week => 'Week';
+
+  @override
+  String get increaseFromLastWeek => 'Increase from last week';
+
+  @override
+  String get dailyProfits => 'Daily Profits';
+
+  @override
+  String get profitsByServiceType => 'Profits by Service Type';
+
+  @override
+  String get attachedReport => 'Attached Report';
+
+  @override
+  String get serviceReport => 'Service Report';
+
+  @override
+  String get showMore => 'show more';
+
+  @override
+  String get thereIsNoResult => 'There\'s no result';
+
+  @override
+  String get financialDetails => 'Financial Details';
+
+  @override
+  String get servicePrice => 'Service Price';
+
+  @override
+  String get companyCommission => 'Company Commission';
+
+  @override
+  String get netProfit => 'Net Profit';
+
+  @override
+  String get reportDetails => 'Report Details';
+
+  @override
+  String get whatWasDone => 'What was done';
+
+  @override
+  String get totalCost => 'Total Cost';
+
+  @override
+  String get photosAfterExecution => 'Photos after execution';
+
+  @override
+  String get done => 'Completed';
 
   @override
   String get purchased => 'Purchased';

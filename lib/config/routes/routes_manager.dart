@@ -10,6 +10,7 @@ import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/auth/presentation/views/role_selection_view.dart';
+import '../../features/home/presentation/tabs/technician/report/presentation/view/technician_reports_view.dart';
 import '../../features/home/presentation/views/customer_home_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/home/presentation/views/technician_home_view.dart';
@@ -43,6 +44,7 @@ class RoutesManager {
   static const String appLanguageView = "/appLanguageView";
   static const String termsAndConditionsView = "/termsAndConditionsView";
   static const String privacyPolicyView = "/privacyPolicyView";
+  static const String reportView = "/reportView";
 
   static const String technicianHomeView = "/technicianHomeView";
   static const String orderDetailsView = "/orderDetailsView";
@@ -113,6 +115,10 @@ class RoutesManager {
         );
       case accountSettingsView:
         return MaterialPageRoute(builder: (_) => const AccountSettingsView());
+      
+      case reportView:
+        return MaterialPageRoute(builder: (_) => const TechnicianReportsView());
+      
       // case appLanguageView:
       //   return MaterialPageRoute(builder: (_) => const AppLanguageView());
       case termsAndConditionsView:

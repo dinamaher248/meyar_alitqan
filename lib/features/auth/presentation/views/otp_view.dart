@@ -9,6 +9,7 @@ import '../../../../core/cubit/app_user/app_user_cubit.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../core/helper/responsive_size.dart';
 import '../../../../core/utils/colors_manager.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../manager/register_view_model/register_view_model_states.dart';
 import '../manager/verify_otp_view_model/verify_otp_view_model.dart';
 import '../manager/verify_otp_view_model/verify_otp_view_model_states.dart';
@@ -88,6 +89,8 @@ class _OtpViewState extends State<OtpView> {
 
   @override
   Widget build(BuildContext context) {
+          final loc = AppLocalizations.of(context)!;
+
     return BlocConsumer<VerifyOtpViewModel, VerifyOtpStates>(
       listener: (context, state) async {
         if (state is VerifyOtpSuccess) {
@@ -287,7 +290,7 @@ class _OtpViewState extends State<OtpView> {
                                   );
                                 },
                                 child: Text(
-                                  "الدخول كزائر",
+                                  loc.continueAsGuest,
                                   style: TextStyle(
                                     color: ColorsManager.primaryColor,
                                     fontWeight: FontWeight.bold,

@@ -324,6 +324,7 @@ class LoginForm extends StatelessWidget {
                                   ),
                             ),
                           ),
+                        SizedBox(height: RS.size(context, 32)),
                       ],
                     ],
                   ),
@@ -336,40 +337,44 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
-
 class _RegisterRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          AppLocalizations.of(context)!.dontHaveAccount,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            fontSize: RS.font(context, 14),
-            fontWeight: FontWeight.w600,
-            color: ColorsManager.darkGrey,
-          ),
-        ),
-        const SizedBox(width: 6),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              RoutesManager.register,
-              arguments: UserRole.customer.name,
-            );
-          },
-          child: Text(
-            AppLocalizations.of(context)!.createNewAccount,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: Alignment.center,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.dontHaveAccount,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: ColorsManager.primaryColor,
-              fontWeight: FontWeight.w500,
               fontSize: RS.font(context, 14),
+              fontWeight: FontWeight.w600,
+              color: ColorsManager.darkGrey,
             ),
           ),
-        ),
-      ],
+          const SizedBox(width: 6),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                RoutesManager.register,
+                arguments: UserRole.customer.name,
+              );
+            },
+            child: Text(
+              AppLocalizations.of(context)!.createNewAccount,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: ColorsManager.primaryColor,
+                fontWeight: FontWeight.w500,
+                fontSize: RS.font(context, 14),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

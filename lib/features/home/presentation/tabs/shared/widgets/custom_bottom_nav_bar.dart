@@ -41,33 +41,46 @@ class CustomBottomNavigationBar extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        child: GNav(
-          selectedIndex: currentIndex,
-          onTabChange: onTap,
-          gap: RS.size(context, 8),
-          color: ColorsManager.white.withOpacity(0.7),
-          activeColor: ColorsManager.secondaryColor,
-          iconSize: RS.size(context, 22),
-          padding: EdgeInsets.symmetric(
-            horizontal: RS.size(context, 16),
-            vertical: RS.size(context, 10),
-          ),
-          tabBackgroundColor: ColorsManager.secondaryColor.withOpacity(0.15),
-          tabBorderRadius: RS.radius(context, 20),
-          textStyle: TextStyle(
-            color: ColorsManager.secondaryColor,
-            fontSize: RS.font(context, 13),
-            fontWeight: FontWeight.w600,
-          ),
-          tabs: items.map((item) {
-            final isActive = items.indexOf(item) == currentIndex;
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.center,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minWidth: constraints.maxWidth),
+                child: GNav(
+                  selectedIndex: currentIndex,
+                  onTabChange: onTap,
+                  gap: RS.size(context, 8),
+                  color: ColorsManager.white.withOpacity(0.7),
+                  activeColor: ColorsManager.secondaryColor,
+                  iconSize: RS.size(context, 22),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: RS.size(context, 16),
+                    vertical: RS.size(context, 10),
+                  ),
+                  tabBackgroundColor: ColorsManager.secondaryColor.withOpacity(
+                    0.15,
+                  ),
+                  tabBorderRadius: RS.radius(context, 20),
+                  textStyle: TextStyle(
+                    color: ColorsManager.secondaryColor,
+                    fontSize: RS.font(context, 13),
+                    fontWeight: FontWeight.w600,
+                  ),
+                  tabs: items.map((item) {
+                    final isActive = items.indexOf(item) == currentIndex;
 
-            return GButton(
-              icon: Icons.circle, // placeholder, overridden by leading
-              leading: _buildIcon(context, item, isActive),
-              text: item.label,
+                    return GButton(
+                      icon: Icons.circle, // placeholder, overridden by leading
+                      leading: _buildIcon(context, item, isActive),
+                      text: item.label,
+                    );
+                  }).toList(),
+                ),
+              ),
             );
-          }).toList(),
+          },
         ),
       ),
     );
@@ -97,10 +110,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 color: Colors.redAccent,
                 shape: BoxShape.circle,
               ),
-              constraints: const BoxConstraints(
-                minWidth: 16,
-                minHeight: 16,
-              ),
+              constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
               child: Text(
                 item.badgeCount.toString(),
                 style: const TextStyle(

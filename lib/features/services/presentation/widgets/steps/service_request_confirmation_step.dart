@@ -6,6 +6,7 @@ import 'package:meayar_alitqan/features/orders/customer/presentation/manager/cre
 import 'package:meayar_alitqan/features/services/presentation/widgets/order_summary_pricing_card.dart';
 import 'package:meayar_alitqan/features/services/presentation/widgets/service_request_submit_section.dart';
 
+import '../../../../../l10n/app_localizations.dart';
 import '../order_summary_details_card.dart';
 
 /// Step 4: read-only summary + the original submit logic (untouched),
@@ -32,6 +33,8 @@ class ServiceRequestConfirmationStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+          final loc = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         Expanded(
@@ -41,7 +44,7 @@ class ServiceRequestConfirmationStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "تأكيد الطلب",
+                  loc.submitRequest,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: RS.font(context, 20),
@@ -84,7 +87,7 @@ class ServiceRequestConfirmationStep extends StatelessWidget {
           child: TextButton(
             onPressed: onEdit,
             child: Text(
-              "تعديل الطلب",
+              loc.editOrder,
               style: TextStyle(
                 color: ColorsManager.primaryColor,
                 fontWeight: FontWeight.w500,

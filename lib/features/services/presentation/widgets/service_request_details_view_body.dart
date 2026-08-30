@@ -71,7 +71,7 @@ class _ServiceRequestDetailsBodyState extends State<ServiceRequestDetailsBody> {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
+    final loc = AppLocalizations.of(context)!;
     final orderVM = context.read<CreateOrderViewModel>();
 
     return SafeArea(
@@ -81,7 +81,7 @@ class _ServiceRequestDetailsBodyState extends State<ServiceRequestDetailsBody> {
           BlocListener<CreateOrderViewModel, CreateOrderViewModelStates>(
             listener: (context, state) {
               if (state is CreateOrderViewModelSuccess) {
-                CustomSuccessBottomSheet(context: context, t: t);
+                CustomSuccessBottomSheet(context: context, t: loc);
               }
             },
           ),
@@ -108,7 +108,7 @@ class _ServiceRequestDetailsBodyState extends State<ServiceRequestDetailsBody> {
           autovalidateMode: orderVM.autovalidateMode,
           child: Column(
             children: [
-              HeaderPages(title: "انشاء طلب"),
+              HeaderPages(title: loc.createOrder),
 
               /// ===== Stepper Header =====
               Padding(
@@ -118,11 +118,11 @@ class _ServiceRequestDetailsBodyState extends State<ServiceRequestDetailsBody> {
                 ),
                 child: OrderStepperHeader(
                   currentStep: _stepNumber,
-                  stepLabels: const ["التفاصيل", "نوع الطلب", "الحجز", "التأكيد"],
+                  stepLabels:  [loc.details, loc.orderType, loc.booking, loc.confirmation],
                 ),
               ),
 
-              Expanded(child: _buildStep(context, orderVM, t)),
+              Expanded(child: _buildStep(context, orderVM, loc)),
             ],
           ),
         ),

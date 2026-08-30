@@ -16,6 +16,8 @@ class SubCategoriesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final loc = AppLocalizations.of(context)!;
+
     return BlocBuilder<
       GetSubCategoriesViewModel,
       GetSubCategoriesViewModelStates
@@ -63,7 +65,7 @@ class SubCategoriesGridView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: RS.size(context, 8)),
                 child: Text(
-                  "اختر الخدمه المناسبه لك",
+                  loc.chooseSuitableService,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: RS.font(context, 20),

@@ -10,7 +10,6 @@ class OrderStatusBadge extends StatelessWidget {
   final Color color;
   final IconData icon;
 
-
   const OrderStatusBadge({
     super.key,
     required this.status,
@@ -31,21 +30,25 @@ class OrderStatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(RS.radius(context, 5)),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-
           Icon(
             OrderStatusExtension.icon(status),
             size: RS.size(context, 15),
             color: color,
           ),
           SizedBox(width: RS.size(context, 4)),
-          Text(
-            status.localized(context),
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: RS.font(context, 11),
-                  fontWeight: FontWeight.bold,
-                  color: color,
-                ),
+          Flexible(
+            child: Text(
+              status.localized(context),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontSize: RS.font(context, 11),
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
+            ),
           ),
         ],
       ),

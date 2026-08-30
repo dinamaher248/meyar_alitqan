@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helper/responsive_size.dart';
 import '../../../../core/utils/colors_manager.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class InlineDateTimePicker extends StatefulWidget {
   const InlineDateTimePicker({
@@ -22,8 +23,14 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
   DateTime? _selectedDay;
   TimeOfDay? _selectedTime;
 
-  static const List<String> _weekDays = [
-    "السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعه",
+  List<String> _weekDays(AppLocalizations loc) => [
+    loc.saturday,
+    loc.sunday,
+    loc.monday,
+    loc.tuesday,
+    loc.wednesday,
+    loc.thursday,
+    loc.friday,
   ];
 
   static const List<TimeOfDay> _timeSlots = [
@@ -63,24 +70,46 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
     }
   }
 
-  String _monthName(DateTime date) {
-    const months = [
-      "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
-      "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
+  String _monthName(DateTime date, AppLocalizations loc) {
+    final months = [
+      loc.january,
+      loc.february,
+      loc.march,
+      loc.april,
+      loc.may,
+      loc.june,
+      loc.july,
+      loc.august,
+      loc.september,
+      loc.october,
+      loc.november,
+      loc.december,
     ];
+
     return "${months[date.month - 1]} ${date.year}";
   }
 
   List<DateTime?> _buildDaysGrid() {
-    final firstDayOfMonth = DateTime(_visibleMonth.year, _visibleMonth.month, 1);
-    final daysInMonth = DateTime(_visibleMonth.year, _visibleMonth.month + 1, 0).day;
+    final firstDayOfMonth = DateTime(
+      _visibleMonth.year,
+      _visibleMonth.month,
+      1,
+    );
+    final daysInMonth = DateTime(
+      _visibleMonth.year,
+      _visibleMonth.month + 1,
+      0,
+    ).day;
 
     /// weekday في Dart: Mon=1..Sun=7. عايزين نحول عشان الأسبوع يبدأ بالسبت
     final leadingEmpty = (firstDayOfMonth.weekday % 7 + 1) % 7;
 
     return [
       ...List.generate(leadingEmpty, (_) => null),
-      ...List.generate(daysInMonth, (i) => DateTime(_visibleMonth.year, _visibleMonth.month, i + 1)),
+      ...List.generate(
+        daysInMonth,
+        (i) => DateTime(_visibleMonth.year, _visibleMonth.month, i + 1),
+      ),
     ];
   }
 
@@ -90,15 +119,20 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
     return day.isBefore(onlyToday);
   }
 
-  String _formatTime(TimeOfDay time) {
+  String _formatTime(BuildContext context, TimeOfDay time) {
+    final loc = AppLocalizations.of(context)!;
+
     final hour = time.hourOfPeriod == 0 ? 12 : time.hourOfPeriod;
-    final period = time.period == DayPeriod.am ? "ص" : "م";
+    final period = time.period == DayPeriod.am ? loc.am : loc.pm;
     final minute = time.minute.toString().padLeft(2, '0');
-    return "$hour:$minute$period";
+
+    return "$hour:$minute $period";
   }
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     final days = _buildDaysGrid();
 
     return Column(
@@ -106,7 +140,7 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
       children: [
         /// ===== اختر التاريخ =====
         Text(
-          "اختر التاريخ",
+          loc.chooseDate,
           style: TextStyle(
             fontSize: RS.font(context, 16),
             fontWeight: FontWeight.w600,
@@ -118,7 +152,7 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
         Container(
           padding: EdgeInsets.all(RS.size(context, 12)),
           decoration: BoxDecoration(
-            color: ColorsManager.primaryColor.withOpacity(0.04),
+            color: ColorsManager.primaryColor.withValues(alpha: 0.04),
             borderRadius: BorderRadius.circular(RS.radius(context, 14)),
           ),
           child: Column(
@@ -132,12 +166,15 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
                     color: ColorsManager.primaryColor,
                     onPressed: () {
                       setState(() {
-                        _visibleMonth = DateTime(_visibleMonth.year, _visibleMonth.month - 1);
+                        _visibleMonth = DateTime(
+                          _visibleMonth.year,
+                          _visibleMonth.month - 1,
+                        );
                       });
                     },
                   ),
                   Text(
-                    _monthName(_visibleMonth),
+                    _monthName(_visibleMonth, loc),
                     style: TextStyle(
                       fontSize: RS.font(context, 16),
                       fontWeight: FontWeight.bold,
@@ -148,7 +185,10 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
                     color: ColorsManager.primaryColor,
                     onPressed: () {
                       setState(() {
-                        _visibleMonth = DateTime(_visibleMonth.year, _visibleMonth.month + 1);
+                        _visibleMonth = DateTime(
+                          _visibleMonth.year,
+                          _visibleMonth.month + 1,
+                        );
                       });
                     },
                   ),
@@ -157,19 +197,21 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
 
               /// ===== Week days row =====
               Row(
-                children: _weekDays
-                    .map((d) => Expanded(
-                          child: Center(
-                            child: Text(
-                              d,
-                              style: TextStyle(
-                                fontSize: RS.font(context, 11),
-                                fontWeight: FontWeight.w600,
-                                color: ColorsManager.secondaryTextDarkColor,
-                              ),
+                children: _weekDays(loc)
+                    .map(
+                      (d) => Expanded(
+                        child: Center(
+                          child: Text(
+                            d,
+                            style: TextStyle(
+                              fontSize: RS.font(context, 11),
+                              fontWeight: FontWeight.w600,
+                              color: ColorsManager.secondaryTextDarkColor,
                             ),
                           ),
-                        ))
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
               SizedBox(height: RS.size(context, 6)),
@@ -189,7 +231,8 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
                   if (day == null) return const SizedBox.shrink();
 
                   final isPast = _isPast(day);
-                  final isSelected = _selectedDay != null &&
+                  final isSelected =
+                      _selectedDay != null &&
                       _selectedDay!.year == day.year &&
                       _selectedDay!.month == day.month &&
                       _selectedDay!.day == day.day;
@@ -211,12 +254,14 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
                         "${day.day}",
                         style: TextStyle(
                           fontSize: RS.font(context, 13),
-                          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                          fontWeight: isSelected
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                           color: isPast
                               ? Colors.grey.shade400
                               : isSelected
-                                  ? Colors.white
-                                  : ColorsManager.primaryTextDarkColor,
+                              ? Colors.white
+                              : ColorsManager.primaryTextDarkColor,
                         ),
                       ),
                     ),
@@ -231,7 +276,7 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
 
         /// ===== اختر الوقت =====
         Text(
-          "اختر الوقت",
+          loc.chooseTime,
           style: TextStyle(
             fontSize: RS.font(context, 16),
             fontWeight: FontWeight.w600,
@@ -252,7 +297,8 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
           ),
           itemBuilder: (context, index) {
             final time = _timeSlots[index];
-            final isSelected = _selectedTime != null &&
+            final isSelected =
+                _selectedTime != null &&
                 _selectedTime!.hour == time.hour &&
                 _selectedTime!.minute == time.minute;
 
@@ -264,9 +310,7 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? ColorsManager.primaryColor
-                      : Colors.white,
+                  color: isSelected ? ColorsManager.primaryColor : Colors.white,
                   borderRadius: BorderRadius.circular(RS.radius(context, 10)),
                   border: Border.all(
                     color: isSelected
@@ -275,11 +319,13 @@ class _InlineDateTimePickerState extends State<InlineDateTimePicker> {
                   ),
                 ),
                 child: Text(
-                  _formatTime(time),
+                  _formatTime(context, time),
                   style: TextStyle(
                     fontSize: RS.font(context, 13),
                     fontWeight: FontWeight.w600,
-                    color: isSelected ? Colors.white : ColorsManager.primaryTextDarkColor,
+                    color: isSelected
+                        ? Colors.white
+                        : ColorsManager.primaryTextDarkColor,
                   ),
                 ),
               ),

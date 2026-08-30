@@ -44,7 +44,7 @@ class _PhotosPickerSectionState extends State<PhotosPickerSection> {
       children: [
         Text(
           t.addVideosForYourProblem == t.addVideosForYourProblem
-              ? "اضف صور أو فيديوهات توضح المشكله (اختياري)"
+              ? t.addMedia
               : t.addPhotosForYourProblem,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontSize: RS.font(context, 16),

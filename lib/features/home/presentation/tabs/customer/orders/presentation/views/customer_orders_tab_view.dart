@@ -16,7 +16,7 @@ class CustomerOrdersTabView extends StatelessWidget {
         final loc = AppLocalizations.of(context)!;
 
     return  Scaffold(
-      appBar: CustomAppBar(title: loc.orders , centerTitle: true,),
+      appBar: CustomAppBar(title: loc.orders , centerTitle: true,showBackButton: false,),
       body: SafeArea(child: MultiBlocProvider(
          providers: [
 

@@ -24,14 +24,13 @@ class OnboardingViewBody extends StatelessWidget {
             /// ===== Page 1 =====
             OnboardingPage(
               image: AssetsManager.onBoardingImage1,
+              Size: 400,
               title: loc.onboarding_page1_title,
               checklistItems: [
                 loc.onboarding_quality_check1,
                 loc.onboarding_quality_check2,
                 loc.onboarding_quality_check3,
               ],
-              
-              
               isLastPage: false,
               buttonText: loc.onboardingContinue,
             ),
@@ -39,13 +38,14 @@ class OnboardingViewBody extends StatelessWidget {
             /// ===== Page 2 =====
             OnboardingPage(
               image: AssetsManager.onBoardingImage2,
+              Size: 300,
               title: loc.onboarding_page2_title,
               checklistItems: [
                 loc.onboarding_service_check1,
                 loc.onboarding_service_check2,
                 loc.onboarding_service_check3,
               ],
-             
+
               isLastPage: false,
               buttonText: loc.onboardingContinue,
             ),
@@ -53,6 +53,7 @@ class OnboardingViewBody extends StatelessWidget {
             /// ===== Page 3 (Last) =====
             OnboardingPage(
               image: AssetsManager.onBoardingImage3,
+              Size: 300,
               title: loc.onboarding_page3_title,
               checklistItems: [
                 loc.onboarding_technician_check1,

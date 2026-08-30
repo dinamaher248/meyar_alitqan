@@ -276,6 +276,132 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'ابحث عن خدمه....';
 
   @override
+  String get chooseSuitableService => 'اختر الخدمة المناسبة لك';
+
+  @override
+  String get currencyDinar => 'دينار';
+
+  @override
+  String get satisfiedCustomers => 'عميل راضي';
+
+  @override
+  String get by => 'بواسطة';
+
+  @override
+  String get details => 'التفاصيل';
+
+  @override
+  String get orderType => 'نوع الطلب';
+
+  @override
+  String get booking => 'الحجز';
+
+  @override
+  String get confirmation => 'التأكيد';
+
+  @override
+  String get createOrder => 'إنشاء طلب';
+
+  @override
+  String get orderSection => 'قسم الطلب';
+
+  @override
+  String get addMedia => 'أضف صور أو فيديوهات توضح المشكلة (اختياري)';
+
+  @override
+  String get january => 'يناير';
+
+  @override
+  String get february => 'فبراير';
+
+  @override
+  String get march => 'مارس';
+
+  @override
+  String get april => 'أبريل';
+
+  @override
+  String get may => 'مايو';
+
+  @override
+  String get june => 'يونيو';
+
+  @override
+  String get july => 'يوليو';
+
+  @override
+  String get august => 'أغسطس';
+
+  @override
+  String get september => 'سبتمبر';
+
+  @override
+  String get october => 'أكتوبر';
+
+  @override
+  String get november => 'نوفمبر';
+
+  @override
+  String get december => 'ديسمبر';
+
+  @override
+  String get chooseTime => 'اختر الوقت';
+
+  @override
+  String get saturday => 'السبت';
+
+  @override
+  String get sunday => 'الأحد';
+
+  @override
+  String get monday => 'الاثنين';
+
+  @override
+  String get tuesday => 'الثلاثاء';
+
+  @override
+  String get wednesday => 'الأربعاء';
+
+  @override
+  String get thursday => 'الخميس';
+
+  @override
+  String get friday => 'الجمعة';
+
+  @override
+  String get am => 'ص';
+
+  @override
+  String get pm => 'م';
+
+  @override
+  String get editOrder => 'تعديل الطلب';
+
+  @override
+  String get saveChanges => 'حفظ التعديلات';
+
+  @override
+  String get costSummary => 'ملخص التكلفة';
+
+  @override
+  String get urgentOrderFee => 'رسوم الطلب العاجل';
+
+  @override
+  String get expectedTotal => 'الإجمالي المتوقع';
+
+  @override
+  String get uploadedMedia => 'تم رفع';
+
+  @override
+  String get images => 'صور';
+
+  @override
+  String get video => 'فيديو';
+
+  @override
+  String get and => 'و';
+
+  @override
   String get categories => 'أقسام الخدمات';
 
   @override
@@ -630,7 +756,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get faq_title_booking => 'الحجز والفنيين';
 
   @override
-  String get serviceDetails => 'وصف الخدمه';
+  String get serviceDetails => 'تفاصيل الخدمات';
 
   @override
   String get problemDetails => 'وصف المشكلة';
@@ -898,6 +1024,63 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rejected => 'مرفوض';
+
+  @override
+  String get reports => 'التقارير';
+
+  @override
+  String get totalProfitsThisWeek => 'اجمالي الارباح هذا الاسبوع';
+
+  @override
+  String get week => 'اسبوع';
+
+  @override
+  String get increaseFromLastWeek => 'زياده عن الاسبوع الماضي';
+
+  @override
+  String get dailyProfits => 'الارباح اليوميه';
+
+  @override
+  String get profitsByServiceType => 'الارباح حسب نوع الخدمه';
+
+  @override
+  String get attachedReport => 'التقرير المرفق';
+
+  @override
+  String get serviceReport => 'تقرير خدمه';
+
+  @override
+  String get showMore => 'عرض المزيد';
+
+  @override
+  String get thereIsNoResult => 'لا توجد نتائج';
+
+  @override
+  String get financialDetails => 'التفاصيل الماليه';
+
+  @override
+  String get servicePrice => 'سعر الخدمه';
+
+  @override
+  String get companyCommission => 'عموله الشركه';
+
+  @override
+  String get netProfit => 'صافي الربح';
+
+  @override
+  String get reportDetails => 'تفاصيل التقرير';
+
+  @override
+  String get whatWasDone => 'ما تم تنفيذه';
+
+  @override
+  String get totalCost => 'التكلفه الكليه';
+
+  @override
+  String get photosAfterExecution => 'صور بعد التنفيذ';
+
+  @override
+  String get done => 'تم الانجاز';
 
   @override
   String get purchased => 'تم الشراء';

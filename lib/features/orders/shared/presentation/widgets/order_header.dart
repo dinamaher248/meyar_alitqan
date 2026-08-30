@@ -30,18 +30,23 @@ class OrderHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: RS.font(context, 15),
-                fontWeight: FontWeight.bold,
-                color: isTechnician
-                    ? ColorsManager.white
-                    : ColorsManager.primaryTextDarkColor,
+            Expanded(
+              child: Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontSize: RS.font(context, 15),
+                  fontWeight: FontWeight.bold,
+                  color: isTechnician
+                      ? ColorsManager.white
+                      : ColorsManager.primaryTextDarkColor,
+                ),
               ),
             ),
+            SizedBox(width: RS.size(context, 8)),
             OrderStatusBadge(
               status: status,
               color: statusColor,
@@ -50,9 +55,7 @@ class OrderHeader extends StatelessWidget {
           ],
         ),
         SizedBox(height: RS.size(context, 8)),
-        OrderNumberBadge(orderNumber: orderNumber,
-          isTechnician: isTechnician,
-        ),
+        OrderNumberBadge(orderNumber: orderNumber, isTechnician: isTechnician),
       ],
     );
   }

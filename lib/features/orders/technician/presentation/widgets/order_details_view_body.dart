@@ -593,8 +593,6 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
     );
   }
 
-  // ---------------- باقي الـ Helpers (زي ما هي من غير أي تغيير) ----------------
-
   String _safe(String? Function() getter, String fallback) {
     try {
       final v = getter();
@@ -619,7 +617,7 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                _safe(() => order.categoryId, t.serviceName),
+                _safe(() => order.title, t.serviceName),
                 textAlign: TextAlign.right,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -736,7 +734,10 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
     List<String> images,
     List<String> videos,
   ) {
+    final loc = AppLocalizations.of(context)!;
+
     final thumbs = images.take(3).toList();
+
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
@@ -747,35 +748,33 @@ class _OrderDetailsViewBodyState extends State<OrderDetailsViewBody> {
         color: Colors.green.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(RS.radius(context, 10)),
       ),
-      child: Row(
+      child: Wrap(
+        alignment: WrapAlignment.spaceBetween,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: RS.size(context, 10),
+        runSpacing: RS.size(context, 10),
         children: [
-          Expanded(
-            child: Text(
-              'تم رفع ${images.length} صور و ${videos.length} فيديو',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: RS.font(context, 13),
-                fontWeight: FontWeight.bold,
-                color: Colors.green.shade800,
-              ),
+          Text(
+            '${loc.uploadedMedia} ${images.length} ${loc.images} ${loc.and} ${videos.length} ${loc.video}',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: RS.font(context, 13),
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade800,
             ),
           ),
-          SizedBox(width: RS.size(context, 8)),
-          Row(
+          Wrap(
+            spacing: RS.size(context, 8),
+            runSpacing: RS.size(context, 8),
             children: thumbs
                 .map(
-                  (url) => Padding(
-                    padding: EdgeInsets.only(left: RS.size(context, 6)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                        RS.radius(context, 8),
-                      ),
-                      child: Image.network(
-                        url,
-                        width: RS.size(context, 44),
-                        height: RS.size(context, 44),
-                        fit: BoxFit.cover,
-                      ),
+                  (url) => ClipRRect(
+                    borderRadius: BorderRadius.circular(RS.radius(context, 8)),
+                    child: Image.network(
+                      url,
+                      width: RS.size(context, 150),
+                      height: RS.size(context, 150),
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )

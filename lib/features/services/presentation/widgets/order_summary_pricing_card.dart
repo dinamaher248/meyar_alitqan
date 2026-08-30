@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meayar_alitqan/l10n/app_localizations.dart';
 
 import '../../../../core/helper/responsive_size.dart';
 import '../../../../core/utils/colors_manager.dart';
@@ -8,6 +9,7 @@ class OrderSummaryPricingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(RS.size(context, 16)),
@@ -19,7 +21,7 @@ class OrderSummaryPricingCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "ملخص التكلفة",
+            loc.costSummary,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontSize: RS.font(context, 14),
               fontWeight: FontWeight.w500,
@@ -28,16 +30,16 @@ class OrderSummaryPricingCard extends StatelessWidget {
           ),
           SizedBox(height: RS.size(context, 12)),
 
-          _row(context, "سعر الخدمة", "200-400 دينار"),
+          _row(context, loc.servicePrice, "200-400 ${loc.currencyDinar}"),
           SizedBox(height: RS.size(context, 8)),
-          _row(context, "رسوم الطلب العاجل", "100-200 دينار"),
+          _row(context, loc.urgentOrderFee, "100-200 ${loc.currencyDinar}"),
 
           Padding(
             padding: EdgeInsets.symmetric(vertical: RS.size(context, 10)),
             child: Divider(color: ColorsManager.grey),
           ),
 
-          _row(context, "الإجمالي المتوقع", "300-600 دينار", isTotal: true),
+          _row(context, loc.expectedTotal, "300-600 ${loc.currencyDinar}", isTotal: true),
         ],
       ),
     );

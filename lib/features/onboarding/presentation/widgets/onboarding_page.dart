@@ -145,6 +145,7 @@ class OnboardingPage extends StatelessWidget {
     required this.checklistItems,
     required this.isLastPage,
     required this.buttonText,
+    required this.Size
   });
 
   final String image;
@@ -152,6 +153,7 @@ class OnboardingPage extends StatelessWidget {
   final List<String> checklistItems;
   final bool isLastPage;
   final String buttonText;
+  final double Size;
 
   @override
   Widget build(BuildContext context) {
@@ -191,9 +193,13 @@ class OnboardingPage extends StatelessWidget {
                   ),
                 ),
               ),
-
               /// ===== Illustration + Floating Badges =====
-              Image.asset(image, fit: BoxFit.contain),
+              Image.asset(
+                image,
+                fit: BoxFit.contain,
+                width: RS.size(context, Size),
+                height: RS.size(context, 320)
+              ),
 
               SizedBox(height: RS.size(context, 16)),
 

@@ -9,9 +9,9 @@ import '../../../../../../../../core/helper/responsive_size.dart';
 import '../../../../../../../../core/services/avatar_upload_service.dart';
 import '../../../../../../../../core/services/secure_storage_service.dart';
 import '../../../../../../../../core/utils/assets_manager.dart';
-import '../../../../../../../../core/utils/colors_manager.dart';
 import '../../../../../../../../l10n/app_localizations.dart';
 import '../../../../../../../profile/shared/domain/entities/settings_Item_model/settings_Item_model.dart';
+import '../../../../../../../profile/shared/presentation/widgets/app_language_view_body.dart';
 import '../../../../../../../profile/shared/presentation/widgets/settings_list.dart';
 import '../../../../../../../profile/shared/presentation/widgets/show_avatar_picker_sheet.dart';
 import '../../../../../../../profile/shared/presentation/widgets/user_profile_avatar.dart';
@@ -28,45 +28,47 @@ class TechnicianAccountTabViewBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            height: RS.size(context, 30),
-            color: ColorsManager.primaryColor.withOpacity(.1),
-          ),
+          // Container(
+          //   height: RS.size(context, 30),
+          //   color: ColorsManager.primaryColor.withOpacity(.1),
+          // ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: RS.size(context, 10.0)),
+            child: UserProfileAvatar(
+              rating: user?.rating,
+              name: user?.fullName,
+              imageUrl: user?.avatarUrl,
+              onChange: () {
+                showAvatarPicker(
+                  context,
+                  onCamera: () async {
+                    final url = await avatarService.pickAndUpload(
+                      ImageSource.camera,
+                    );
+                    if (url != null) {
+                      context.read<AppUserCubit>().updateAvatar(url);
 
-          UserProfileAvatar(
-            rating:  user?.rating,
-            name: user?.fullName,
-            imageUrl: user?.avatarUrl,
-            onChange: () {
-              showAvatarPicker(
-                context,
-                onCamera: () async {
-                  final url = await avatarService.pickAndUpload(
-                    ImageSource.camera,
-                  );
-                  if (url != null) {
-                    context.read<AppUserCubit>().updateAvatar(url);
+                      context
+                          .read<UpdateTechnicianProfileViewModel>()
+                          .updateProfile(avatar: url);
+                    }
+                  },
 
-                    context
-                        .read<UpdateTechnicianProfileViewModel>()
-                        .updateProfile(avatar: url);
-                  }
-                },
+                  onGallery: () async {
+                    final url = await avatarService.pickAndUpload(
+                      ImageSource.gallery,
+                    );
+                    if (url != null) {
+                      context.read<AppUserCubit>().updateAvatar(url);
 
-                onGallery: () async {
-                  final url = await avatarService.pickAndUpload(
-                    ImageSource.gallery,
-                  );
-                  if (url != null) {
-                    context.read<AppUserCubit>().updateAvatar(url);
-
-                    context
-                        .read<UpdateTechnicianProfileViewModel>()
-                        .updateProfile(avatar: url);
-                  }
-                },
-              );
-            },
+                      context
+                          .read<UpdateTechnicianProfileViewModel>()
+                          .updateProfile(avatar: url);
+                    }
+                  },
+                );
+              },
+            ),
           ),
           SizedBox(height: RS.size(context, 16)),
           SettingsList(
@@ -82,22 +84,35 @@ class TechnicianAccountTabViewBody extends StatelessWidget {
                 },
               ),
               SettingsItemModel(
+                title: AppLocalizations.of(context)!.reports,
+                icon: AssetsManager.reports,
+                onTap: () {
+                  Navigator.pushNamed(context, RoutesManager.reportView);
+                },
+              ),
+              SettingsItemModel(
                 title: AppLocalizations.of(context)!.appLanguage,
                 icon: AssetsManager.globe,
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesManager.appLanguageView);
+                  showLanguagePickerSheet(context);
                 },
+                // onTap: () {
+                //   Navigator.pushNamed(context, RoutesManager.appLanguageView);
+                // },
               ),
 
               SettingsItemModel(
                 title: AppLocalizations.of(context)!.termsAndConditions,
                 icon: AssetsManager.work,
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesManager.termsAndConditionsView);
+                  Navigator.pushNamed(
+                    context,
+                    RoutesManager.termsAndConditionsView,
+                  );
                 },
               ),
-                  SettingsItemModel(
-                title:  AppLocalizations.of(context)!.contactUs,
+              SettingsItemModel(
+                title: AppLocalizations.of(context)!.contactUs,
                 icon: AssetsManager.customerService,
                 onTap: () {
                   Navigator.pushNamed(context, RoutesManager.contactUs);
@@ -122,7 +137,7 @@ class TechnicianAccountTabViewBody extends StatelessWidget {
                       Navigator.pushNamedAndRemoveUntil(
                         context,
                         RoutesManager.splash,
-                            (_) => false,
+                        (_) => false,
                       );
                     },
                   );

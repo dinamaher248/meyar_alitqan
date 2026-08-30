@@ -228,20 +228,30 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              AppLocalizations.of(context)!.expectedPrice,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: RS.font(context, 14),
-                fontWeight: FontWeight.w400,
-                color: ColorsManager.darkGrey,
+            Flexible(
+              child: Text(
+                AppLocalizations.of(context)!.expectedPrice,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: RS.font(context, 14),
+                  fontWeight: FontWeight.w400,
+                  color: ColorsManager.darkGrey,
+                ),
               ),
             ),
-            Text(
-              widget.order!.price.toString(),
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontSize: RS.font(context, 14),
-                fontWeight: FontWeight.w500,
-                color: ColorsManager.primaryColor,
+            SizedBox(width: RS.size(context, 8)),
+            Flexible(
+              child: Text(
+                widget.order!.price.toString(),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.end,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontSize: RS.font(context, 14),
+                  fontWeight: FontWeight.w500,
+                  color: ColorsManager.primaryColor,
+                ),
               ),
             ),
           ],
@@ -250,44 +260,7 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
     );
   }
 
-  // Widget _actionsRow(BuildContext context) {
-  //   final buttons = <Widget>[];
-  //   // تحديث حالة الفني
-  //   // if (_showUpdateStatus) {
-  //   //   buttons.add(
-  //   //     Expanded(child: OrderDetailsUpdateStatusButton(order: widget.order!)),
-  //   //   );
-  //   // } else if (_showViewDetails) {
-  //   //   buttons.add(Expanded(child: _viewDetailsButton(context)));
-  //   // }
-  //   if (!widget.isNewRequest) {
-  //     buttons.add(Expanded(child: _viewDetailsButton(context)));
-  //   }
-
-  //   if (_showCancel) {
-  //     buttons.add(Expanded(child: CancelOrderSection(orderId: widget.orderId)));
-  //   }
-
-  //   if (buttons.isEmpty) return const SizedBox.shrink();
-
-  //   return Directionality(
-  //     textDirection: TextDirection.rtl,
-  //     child: Padding(
-  //       padding: EdgeInsets.symmetric(horizontal: RS.size(context, 12)),
-  //       child: Row(
-  //         children: [
-  //           for (int i = 0; i < buttons.length; i++) ...[
-  //             if (i != 0) SizedBox(width: RS.size(context, 10)),
-  //             buttons[i],
-  //           ],
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget _actionsRow(BuildContext context) {
-    /// ===== حالة الطلب الجديد للفني: تفاصيل + رفض + قبول =====
     if (widget.isNewRequest && widget.isTechnician) {
       return Directionality(
         textDirection: TextDirection.rtl,
@@ -295,11 +268,10 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
           padding: EdgeInsets.symmetric(horizontal: RS.size(context, 12)),
           child: Row(
             children: [
-              Expanded(child: _acceptButton(context)),
-              SizedBox(width: RS.size(context, 8)),
-              Expanded(child: _rejectButton(context)),
-              SizedBox(width: RS.size(context, 8)),
-
+              // Expanded(child: _acceptButton(context)),
+              // SizedBox(width: RS.size(context, 8)),
+              // Expanded(child: _rejectButton(context)),
+              // SizedBox(width: RS.size(context, 8)),
               Expanded(child: _viewDetailsButton(context)),
             ],
           ),
@@ -337,10 +309,7 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
 
   Widget _rejectButton(BuildContext context) {
     return InkWell(
-      onTap: () {
-        // ⚠️ TODO: نداء الـ Use Case الحقيقي لرفض الطلب
-        // مثال متوقع: context.read<RejectOrderViewModel>().rejectOrder(widget.orderId);
-      },
+      onTap: () {},
       child: Container(
         height: RS.size(context, 44),
         decoration: BoxDecoration(
@@ -348,24 +317,31 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
           borderRadius: BorderRadius.circular(RS.radius(context, 10)),
         ),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.close,
-                size: RS.size(context, 16),
-                color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: RS.size(context, 4)),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.close,
+                    size: RS.size(context, 16),
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: RS.size(context, 4)),
+                  Text(
+                    "رفض",
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: RS.font(context, 13),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: RS.size(context, 4)),
-              Text(
-                "رفض",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: RS.font(context, 13),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -374,10 +350,7 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
 
   Widget _acceptButton(BuildContext context) {
     return InkWell(
-      onTap: () {
-        // ⚠️ TODO: نداء الـ Use Case الحقيقي لقبول الطلب
-        // مثال متوقع: context.read<AcceptOrderViewModel>().acceptOrder(widget.orderId);
-      },
+      onTap: () {},
       child: Container(
         height: RS.size(context, 44),
         decoration: BoxDecoration(
@@ -385,24 +358,31 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
           borderRadius: BorderRadius.circular(RS.radius(context, 10)),
         ),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.check,
-                size: RS.size(context, 16),
-                color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: RS.size(context, 4)),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.check,
+                    size: RS.size(context, 16),
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: RS.size(context, 4)),
+                  Text(
+                    "قبول",
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: RS.font(context, 13),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: RS.size(context, 4)),
-              Text(
-                "قبول",
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: RS.font(context, 13),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -415,7 +395,10 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
         if (!mounted) return;
         Navigator.of(context, rootNavigator: true).push(
           MaterialPageRoute(
-            builder: (_) => OrderDetailsView(order: widget.order!, isTechnician: widget.isTechnician,),
+            builder: (_) => OrderDetailsView(
+              order: widget.order!,
+              isTechnician: widget.isTechnician,
+            ),
           ),
         );
       },
@@ -434,28 +417,35 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
           ),
         ),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                AppLocalizations.of(context)!.viewDetails,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: widget.isTechnician
-                      ? ColorsManager.white
-                      : ColorsManager.primaryColor,
-                  fontSize: RS.font(context, 14),
-                ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: RS.size(context, 4)),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.viewDetails,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: widget.isTechnician
+                          ? ColorsManager.white
+                          : ColorsManager.primaryColor,
+                      fontSize: RS.font(context, 14),
+                    ),
+                  ),
+                  SizedBox(width: RS.size(context, 4)),
+                  Icon(
+                    Icons.chevron_right,
+                    size: RS.size(context, 18),
+                    color: widget.isTechnician
+                        ? ColorsManager.white
+                        : ColorsManager.primaryColor,
+                  ),
+                ],
               ),
-              SizedBox(width: RS.size(context, 4)),
-              Icon(
-                Icons.chevron_right,
-                size: RS.size(context, 18),
-                color: widget.isTechnician
-                    ? ColorsManager.white
-                    : ColorsManager.primaryColor,
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -604,6 +594,8 @@ class _OrderDetailsCardState extends State<OrderDetailsCard> {
   Widget _noTechnicianText(BuildContext context) {
     return Text(
       AppLocalizations.of(context)!.noTechnicianAssigned,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
         fontWeight: FontWeight.bold,
         fontSize: RS.font(context, 14),

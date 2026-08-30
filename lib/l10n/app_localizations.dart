@@ -629,6 +629,258 @@ abstract class AppLocalizations {
   /// **'Search for services.....'**
   String get search;
 
+  /// No description provided for @chooseSuitableService.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the service that suits you'**
+  String get chooseSuitableService;
+
+  /// No description provided for @currencyDinar.
+  ///
+  /// In en, this message translates to:
+  /// **'Dinar'**
+  String get currencyDinar;
+
+  /// No description provided for @satisfiedCustomers.
+  ///
+  /// In en, this message translates to:
+  /// **'satisfied customers'**
+  String get satisfiedCustomers;
+
+  /// No description provided for @by.
+  ///
+  /// In en, this message translates to:
+  /// **'By'**
+  String get by;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @orderType.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Type'**
+  String get orderType;
+
+  /// No description provided for @booking.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking'**
+  String get booking;
+
+  /// No description provided for @confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation'**
+  String get confirmation;
+
+  /// No description provided for @createOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Order'**
+  String get createOrder;
+
+  /// No description provided for @orderSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Section'**
+  String get orderSection;
+
+  /// No description provided for @addMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'Add images or videos showing the issue (Optional)'**
+  String get addMedia;
+
+  /// No description provided for @january.
+  ///
+  /// In en, this message translates to:
+  /// **'January'**
+  String get january;
+
+  /// No description provided for @february.
+  ///
+  /// In en, this message translates to:
+  /// **'February'**
+  String get february;
+
+  /// No description provided for @march.
+  ///
+  /// In en, this message translates to:
+  /// **'March'**
+  String get march;
+
+  /// No description provided for @april.
+  ///
+  /// In en, this message translates to:
+  /// **'April'**
+  String get april;
+
+  /// No description provided for @may.
+  ///
+  /// In en, this message translates to:
+  /// **'May'**
+  String get may;
+
+  /// No description provided for @june.
+  ///
+  /// In en, this message translates to:
+  /// **'June'**
+  String get june;
+
+  /// No description provided for @july.
+  ///
+  /// In en, this message translates to:
+  /// **'July'**
+  String get july;
+
+  /// No description provided for @august.
+  ///
+  /// In en, this message translates to:
+  /// **'August'**
+  String get august;
+
+  /// No description provided for @september.
+  ///
+  /// In en, this message translates to:
+  /// **'September'**
+  String get september;
+
+  /// No description provided for @october.
+  ///
+  /// In en, this message translates to:
+  /// **'October'**
+  String get october;
+
+  /// No description provided for @november.
+  ///
+  /// In en, this message translates to:
+  /// **'November'**
+  String get november;
+
+  /// No description provided for @december.
+  ///
+  /// In en, this message translates to:
+  /// **'December'**
+  String get december;
+
+  /// No description provided for @chooseTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Time'**
+  String get chooseTime;
+
+  /// No description provided for @saturday.
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get saturday;
+
+  /// No description provided for @sunday.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday'**
+  String get sunday;
+
+  /// No description provided for @monday.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get monday;
+
+  /// No description provided for @tuesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get tuesday;
+
+  /// No description provided for @wednesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get wednesday;
+
+  /// No description provided for @thursday.
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get thursday;
+
+  /// No description provided for @friday.
+  ///
+  /// In en, this message translates to:
+  /// **'Friday'**
+  String get friday;
+
+  /// No description provided for @am.
+  ///
+  /// In en, this message translates to:
+  /// **'AM'**
+  String get am;
+
+  /// No description provided for @pm.
+  ///
+  /// In en, this message translates to:
+  /// **'PM'**
+  String get pm;
+
+  /// No description provided for @editOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Order'**
+  String get editOrder;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// No description provided for @costSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost Summary'**
+  String get costSummary;
+
+  /// No description provided for @urgentOrderFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent Order Fee'**
+  String get urgentOrderFee;
+
+  /// No description provided for @expectedTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated Total'**
+  String get expectedTotal;
+
+  /// No description provided for @uploadedMedia.
+  ///
+  /// In en, this message translates to:
+  /// **'uploaded'**
+  String get uploadedMedia;
+
+  /// No description provided for @images.
+  ///
+  /// In en, this message translates to:
+  /// **'images'**
+  String get images;
+
+  /// No description provided for @video.
+  ///
+  /// In en, this message translates to:
+  /// **'videos'**
+  String get video;
+
+  /// No description provided for @and.
+  ///
+  /// In en, this message translates to:
+  /// **'and'**
+  String get and;
+
   /// No description provided for @categories.
   ///
   /// In en, this message translates to:
@@ -872,7 +1124,7 @@ abstract class AppLocalizations {
   /// No description provided for @personalFile.
   ///
   /// In en, this message translates to:
-  /// **'personalFile'**
+  /// **'Personal File'**
   String get personalFile;
 
   /// No description provided for @ourMainLocation.
@@ -1864,6 +2116,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rejected'**
   String get rejected;
+
+  /// No description provided for @reports.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports'**
+  String get reports;
+
+  /// No description provided for @totalProfitsThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Total profits this week'**
+  String get totalProfitsThisWeek;
+
+  /// No description provided for @week.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get week;
+
+  /// No description provided for @increaseFromLastWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Increase from last week'**
+  String get increaseFromLastWeek;
+
+  /// No description provided for @dailyProfits.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Profits'**
+  String get dailyProfits;
+
+  /// No description provided for @profitsByServiceType.
+  ///
+  /// In en, this message translates to:
+  /// **'Profits by Service Type'**
+  String get profitsByServiceType;
+
+  /// No description provided for @attachedReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Attached Report'**
+  String get attachedReport;
+
+  /// No description provided for @serviceReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Report'**
+  String get serviceReport;
+
+  /// No description provided for @showMore.
+  ///
+  /// In en, this message translates to:
+  /// **'show more'**
+  String get showMore;
+
+  /// No description provided for @thereIsNoResult.
+  ///
+  /// In en, this message translates to:
+  /// **'There\'s no result'**
+  String get thereIsNoResult;
+
+  /// No description provided for @financialDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Details'**
+  String get financialDetails;
+
+  /// No description provided for @servicePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Price'**
+  String get servicePrice;
+
+  /// No description provided for @companyCommission.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Commission'**
+  String get companyCommission;
+
+  /// No description provided for @netProfit.
+  ///
+  /// In en, this message translates to:
+  /// **'Net Profit'**
+  String get netProfit;
+
+  /// No description provided for @reportDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Details'**
+  String get reportDetails;
+
+  /// No description provided for @whatWasDone.
+  ///
+  /// In en, this message translates to:
+  /// **'What was done'**
+  String get whatWasDone;
+
+  /// No description provided for @totalCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Cost'**
+  String get totalCost;
+
+  /// No description provided for @photosAfterExecution.
+  ///
+  /// In en, this message translates to:
+  /// **'Photos after execution'**
+  String get photosAfterExecution;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get done;
 
   /// No description provided for @purchased.
   ///

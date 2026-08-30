@@ -32,7 +32,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = AppLocalizations.of(context)!;
+    final loc= AppLocalizations.of(context)!;
 
     return Column(
       children: [
@@ -43,7 +43,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  t.requestDetails,
+                  loc.requestDetails,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontSize: RS.font(context, 20),
                     fontWeight: FontWeight.w600,
@@ -52,7 +52,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ServiceCategoryPickerField(
-                  label: "قسم الطلب",
+                  label: loc.orderSection,
                   initialCategoryId: categoryId,
                   onChanged: (category) {
                     orderVM.setSelectedCategory(category.id);
@@ -64,7 +64,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 Text(
-                  t.location,
+                  loc.location,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontSize: RS.font(context, 16),
                     fontWeight: FontWeight.w500,
@@ -76,12 +76,12 @@ class ServiceRequestDetailsStep extends StatelessWidget {
                   builder: (context, state) {
                     if (state is GetServiceAreasViewModelSuccess) {
                       return LocationPickerField(
-                        hintText: t.locationHint,
+                        hintText: loc.locationHint,
                         controller: orderVM.locationAreaController,
                         onTap: () => showLocationsSheet(context, state.serviceAreas),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
-                            return t.invalidLocation;
+                            return loc.invalidLocation;
                           }
                           return null;
                         },
@@ -106,7 +106,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 Text(
-                  t.locationDescription,
+                  loc.locationDescription,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontSize: RS.font(context, 16),
                     fontWeight: FontWeight.w500,
@@ -117,11 +117,11 @@ class ServiceRequestDetailsStep extends StatelessWidget {
 
                 CustomTextFormField(
                   textEditingController: orderVM.locationDetailsController,
-                  hintText: t.locationDescriptionHint,
+                  hintText: loc.locationDescriptionHint,
                   maxLines: 2,
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
-                      return t.invalidLocation;
+                      return loc.invalidLocation;
                     }
                     return null;
                   },
@@ -141,7 +141,7 @@ class ServiceRequestDetailsStep extends StatelessWidget {
             vertical: RS.size(context, 10),
           ),
           child: CustomButton(
-            text: t.onboardingContinue,
+            text: loc.onboardingContinue,
             onPressed: onContinue,
           ),
         ),

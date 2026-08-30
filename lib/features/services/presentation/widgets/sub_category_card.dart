@@ -57,6 +57,7 @@ class _MobileCategoryCard extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
             width: RS.size(context, 50),
