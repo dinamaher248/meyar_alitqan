@@ -108,7 +108,7 @@ class ServiceOfferCard extends StatelessWidget {
                                     foregroundColor: Colors.white,
                                     padding: EdgeInsets.symmetric(
                                       horizontal: RS.size(context, 14),
-                                      vertical: RS.size(context, 8),
+                                      vertical: RS.size(context, 5),
                                     ),
                                     shape: RoundedRectangleBorder(
                                       borderRadius:

@@ -9,14 +9,8 @@ class WebMaxWidth extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-
     if (kIsWeb && width > 900) {
-      return Center(
-        child: SizedBox(
-          width: 1000,
-          child: child,
-        ),
-      );
+      return Center(child: SizedBox(width: width * 0.9, child: child));
     }
 
     return child;

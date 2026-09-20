@@ -208,16 +208,18 @@ class LoginForm extends StatelessWidget {
                                 );
                               },
                       ),
-                      SizedBox(height: RS.size(context, 32)),
-
-                      Text(
-                        loc.orLoginWith,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: RS.font(context, 14),
-                          fontWeight: FontWeight.w500,
-                          color: ColorsManager.secondaryTextDarkColor,
+                      SizedBox(height: RS.size(context, 20)),
+                      if (role == UserRole.customer.name) ...[
+                        Text(
+                          loc.orLoginWith,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                fontSize: RS.font(context, 14),
+                                fontWeight: FontWeight.w500,
+                                color: ColorsManager.secondaryTextDarkColor,
+                              ),
                         ),
-                      ),
+                      ],
                       if (role == UserRole.customer.name) ...[
                         SizedBox(height: RS.size(context, 20)),
                         BlocConsumer<
@@ -249,8 +251,8 @@ class LoginForm extends StatelessWidget {
                                               .signInWithGoogle();
                                         },
                                   child: Container(
-                                    width: RS.size(context, 80),
-                                    height: RS.size(context, 70),
+                                    width: RS.size(context, 60),
+                                    height: RS.size(context, 50),
                                     decoration: BoxDecoration(
                                       color: ColorsManager.lightGrey,
                                       borderRadius: BorderRadius.circular(10),
@@ -277,8 +279,8 @@ class LoginForm extends StatelessWidget {
                                     // Apple Sign In
                                   },
                                   child: Container(
-                                    width: RS.size(context, 80),
-                                    height: RS.size(context, 70),
+                                    width: RS.size(context, 60),
+                                    height: RS.size(context, 50),
                                     decoration: BoxDecoration(
                                       color: ColorsManager.lightGrey,
                                       borderRadius: BorderRadius.circular(10),
@@ -299,10 +301,10 @@ class LoginForm extends StatelessWidget {
                         ),
                         SizedBox(height: RS.size(context, 18)),
                         if (role == UserRole.customer.name) ...[
-                          SizedBox(height: RS.size(context, 32)),
+                          // SizedBox(height: RS.size(context, 32)),
                           _RegisterRow(),
                         ],
-                        SizedBox(height: RS.size(context, 41)),
+                        SizedBox(height: RS.size(context, 12)),
 
                         if (!kIsWeb)
                           GestureDetector(
@@ -337,6 +339,7 @@ class LoginForm extends StatelessWidget {
     );
   }
 }
+
 class _RegisterRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

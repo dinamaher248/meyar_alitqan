@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -390,6 +391,8 @@ import '../../features/services/data/data_sources_impl/remote/categories_remote_
     as _i53;
 import '../../features/services/data/data_sources_impl/remote/request_priority_remote_data_sources_impl/get_request_priority_remote_data_source_impl/get_request_priority_remote_data_source_impl.dart'
     as _i214;
+import '../../features/services/data/data_sources_impl/static_service_offers_repository.dart'
+    as _i110;
 import '../../features/services/data/repositories_impl/categories_repos_impl/get_main_categories_repo_impl/get_main_categories_repo_impl.dart'
     as _i910;
 import '../../features/services/data/repositories_impl/categories_repos_impl/get_services_by_sub_repo_impl/get_services_by_sub_repo_impl.dart'
@@ -523,10 +526,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i798.GetSparePartRemoteDataSource>(
       () => _i543.GetSparePartRemoteDataSourceImpl(),
     );
-    gh.factory<_i698.GetServiceOffersViewModel>(
-      () =>
-          _i698.GetServiceOffersViewModel(gh<_i326.ServiceOffersRepository>()),
-    );
     gh.factory<_i82.GetOrderDetailsRemoteDataSource>(
       () => _i102.GetOrderDetailsRemoteDataSourceImpl(),
     );
@@ -577,6 +576,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i87.GetReviewsRepo>(
       () => _i171.GetReviewRepoImpl(gh<_i694.GetReviewRemoteDataSource>()),
+    );
+    gh.lazySingleton<_i326.ServiceOffersRepository>(
+      () => _i110.StaticServiceOffersRepository(),
     );
     gh.factory<_i379.GetTermsAndCondiationsRemoteDataSource>(
       () => _i895.GetTermsAndCondiationsRemoteDataSourceImpl(),
@@ -794,6 +796,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i901.UpdateTechnicianProfileUseCase(
         gh<_i980.UpdateTechnicianProfileRepo>(),
       ),
+    );
+    gh.factory<_i698.GetServiceOffersViewModel>(
+      () =>
+          _i698.GetServiceOffersViewModel(gh<_i326.ServiceOffersRepository>()),
     );
     gh.factory<_i70.GetBannersRepo>(
       () => _i567.GetBannersRepoImpl(gh<_i141.GetBannersRemoteDataSource>()),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meayar_alitqan/core/utils/assets_manager.dart';
 import 'package:meayar_alitqan/core/utils/strings_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/helper/responsive_size.dart';
 import '../../../../core/utils/colors_manager.dart';
@@ -32,22 +33,29 @@ class SplashViewBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                     StringsManager.PoweredBy,
+                    StringsManager.PoweredBy,
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       color: ColorsManager.black,
                       fontSize: RS.font(context, 18),
                     ),
                   ),
                   SizedBox(width: RS.size(context, 6)),
-                  Image.asset(
-                    AssetsManager.agencyLogo,
-                    width: RS.size(context, 70),
-                    height: RS.size(context, 70),
+                  InkWell(
+                    onTap: () async {
+                      await launchUrl(
+                        Uri.parse('https://believe-agency.net/'),
+                        mode: LaunchMode.externalApplication,
+                      );
+                    },
+                    child: Image.asset(
+                      AssetsManager.agencyLogo,
+                      width: RS.size(context, 70),
+                      height: RS.size(context, 70),
+                    ),
                   ),
                 ],
               ),
             ),
-
           ),
         ),
       ],

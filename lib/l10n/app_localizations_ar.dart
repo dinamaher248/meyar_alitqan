@@ -87,7 +87,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get onboarding_page3_title => 'خليك مطمئن ... تابع طلبك لحظة بلحظة';
 
   @override
-  String get welcomeBack => 'Welcome Back';
+  String get welcomeBack => 'مرحبًا بعودتك';
 
   @override
   String get orLoginWith => 'أو تسجيل الدخول من خلال';

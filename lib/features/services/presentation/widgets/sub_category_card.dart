@@ -32,10 +32,7 @@ class CategoryCard extends StatelessWidget {
 
 /// ===================== MOBILE =====================
 class _MobileCategoryCard extends StatelessWidget {
-  const _MobileCategoryCard({
-    required this.image,
-    required this.title,
-  });
+  const _MobileCategoryCard({required this.image, required this.title});
 
   final String image;
   final String title;
@@ -46,22 +43,19 @@ class _MobileCategoryCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(RS.radius(context, 10)),
-        border: Border.all(
-          color: ColorsManager.grey,
-          width: 1,
-        ),
+        border: Border.all(color: ColorsManager.grey, width: 1),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: RS.size(context, 25),
-        horizontal: RS.size(context, 8),
+        vertical: RS.size(context, 2),
+        horizontal: RS.size(context, 2),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: RS.size(context, 50),
-            height: RS.size(context, 50),
+            width: RS.size(context, 30),
+            height: RS.size(context, 30),
             child: CachedNetworkImage(
               imageUrl: image,
               fit: BoxFit.contain,
@@ -72,7 +66,7 @@ class _MobileCategoryCard extends StatelessWidget {
                 child: Text(
                   title.isNotEmpty ? title[0] : '?',
                   style: TextStyle(
-                    fontSize: RS.font(context, 18),
+                    fontSize: RS.font(context, 15),
                     fontWeight: FontWeight.bold,
                     color: ColorsManager.primaryColor,
                   ),
@@ -81,7 +75,7 @@ class _MobileCategoryCard extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: RS.size(context, 8)),
+          SizedBox(height: RS.size(context, 5)),
 
           Text(
             title,
@@ -90,7 +84,7 @@ class _MobileCategoryCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.w500,
-              fontSize: RS.font(context, 14),
+              fontSize: RS.font(context, 12),
               color: ColorsManager.primaryTextDarkColor,
             ),
           ),
@@ -102,10 +96,7 @@ class _MobileCategoryCard extends StatelessWidget {
 
 /// ===================== WEB WITH HOVER =====================
 class _WebCategoryCard extends StatefulWidget {
-  const _WebCategoryCard({
-    required this.image,
-    required this.title,
-  });
+  const _WebCategoryCard({required this.image, required this.title});
 
   final String image;
   final String title;
@@ -126,11 +117,7 @@ class _WebCategoryCardState extends State<_WebCategoryCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 220),
         curve: Curves.easeOut,
-        transform: Matrix4.translationValues(
-          0,
-          _hovered ? -10 : 0,
-          0,
-        ),
+        transform: Matrix4.translationValues(0, _hovered ? -10 : 0, 0),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
@@ -143,7 +130,7 @@ class _WebCategoryCardState extends State<_WebCategoryCard> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(_hovered ? 0.25 : 0.15),
+              color: Colors.black.withValues(alpha: _hovered ? 0.25 : 0.15),
               blurRadius: _hovered ? 28 : 16,
               offset: Offset(0, _hovered ? 18 : 10),
             ),
@@ -167,11 +154,8 @@ class _WebCategoryCardState extends State<_WebCategoryCard> {
                   width: 34,
                   height: 34,
                   color: Colors.black,
-                  errorWidget: (_, __, ___) => const Icon(
-                    Icons.build,
-                    size: 30,
-                    color: Colors.black,
-                  ),
+                  errorWidget: (_, __, ___) =>
+                      const Icon(Icons.build, size: 30, color: Colors.black),
                 ),
               ),
             ),

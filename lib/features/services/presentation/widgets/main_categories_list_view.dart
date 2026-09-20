@@ -124,15 +124,15 @@ class _CategoriesRow extends StatelessWidget {
 
         final int visibleCount = _visibleCardsCount(availableWidth);
 
-        final double spacing = RS.size(context, 12);
+        final double spacing = RS.size(context, 9);
         final double cardWidth =
-            (availableWidth - (spacing * (visibleCount - 1))) / visibleCount;
+            (availableWidth - (spacing * (visibleCount - 1))) / visibleCount * 0.7;
 
         final double cardHeight = kIsWeb
             ? (availableWidth >= 1200
                   ? RS.size(context, 200)
                   : RS.size(context, 160))
-            : cardWidth / 0.81;
+            : cardWidth / 1.1;
 
         return SizedBox(
           height: cardHeight,
@@ -179,16 +179,14 @@ class _CategoriesTwoColumnsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        const int crossAxisCount = 2;
-        final double spacing = RS.size(context, 12);
+        const int crossAxisCount = 4;
+        final double spacing = RS.size(context, 8);
 
         final double cardWidth =
             (constraints.maxWidth - spacing * (crossAxisCount - 1)) /
             crossAxisCount;
 
-        // نفس نسبة الارتفاع/العرض المستخدمة بالصف الأفقي (0.81) عشان
-        // شكل الكارت الواحد يضل مطابق تمامًا لباقي الصفحات.
-        final double cardHeight = cardWidth / 0.99;
+        final double cardHeight = cardWidth / 0.7;
 
         return GridView.builder(
           shrinkWrap: true,

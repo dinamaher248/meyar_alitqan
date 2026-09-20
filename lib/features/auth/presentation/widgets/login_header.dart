@@ -58,7 +58,7 @@ class _LanguageSwitcher extends StatelessWidget {
               ),
               SizedBox(width: RS.size(context, 8)),
               Text(
-                currentLang == 'ar' ? 'AR' : 'EN',
+                currentLang == 'ar' ? 'EN' : 'AR',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: RS.font(context, 16),

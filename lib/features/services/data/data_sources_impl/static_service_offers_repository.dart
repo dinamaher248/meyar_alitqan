@@ -2,7 +2,9 @@
 
 import '../../domain/entities/service_offer_entity.dart';
 import '../../domain/repositories/service_offers_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: ServiceOffersRepository)
 class StaticServiceOffersRepository implements ServiceOffersRepository {
   @override
   Future<List<ServiceOfferEntity>> getFeaturedOffers() async {

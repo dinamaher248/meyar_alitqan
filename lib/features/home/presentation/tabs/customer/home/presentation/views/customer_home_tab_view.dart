@@ -5,6 +5,7 @@ import 'package:meayar_alitqan/features/services/presentation/manager/get_main_c
 
 import '../../../../../../../../core/di/di.dart';
 import '../../../../../../../notifications/presentation/manager/unread_notifications_count_view_model/unread_notifications_count_view_model.dart';
+import '../../../../../../../services/presentation/manager/service_model_view_model/service_offers_view_model.dart';
 import '../widgets/customer_home_tab_view_body.dart';
 
 class CustomerHomeTabView extends StatelessWidget {
@@ -19,6 +20,9 @@ class CustomerHomeTabView extends StatelessWidget {
             BlocProvider(
               create: (context) =>
                   getIt<UnreadNotificationsCountViewModel>()..load(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<GetServiceOffersViewModel>(),
             ),
           ],
 

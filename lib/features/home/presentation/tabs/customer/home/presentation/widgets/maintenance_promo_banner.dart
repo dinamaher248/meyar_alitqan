@@ -32,7 +32,7 @@ class MaintenancePromoBanner extends StatelessWidget {
           final double textStart = imageWidth * 0.49;
 
           return Container(
-            height: RS.size(context, 180),
+            height: RS.size(context, 165),
             width: double.infinity,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
@@ -61,7 +61,7 @@ class MaintenancePromoBanner extends StatelessWidget {
                   bottom: 0,
                   child: SizedBox(
                     width: imageWidth,
-                    height: RS.size(context, 180),
+                    height: RS.size(context, 160),
                     child: Image.asset(
                       AssetsManager.maintenanceWorker,
                       fit: BoxFit.cover,
@@ -74,7 +74,7 @@ class MaintenancePromoBanner extends StatelessWidget {
                   left: textStart,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: RS.size(context, 16),
+                      vertical: RS.size(context, 10),
                       horizontal: RS.size(context, 20),
                     ),
                     child: Align(
@@ -116,7 +116,7 @@ class MaintenancePromoBanner extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.symmetric(
                               horizontal: RS.size(context, 20),
-                              vertical: RS.size(context, 9),
+                              vertical: RS.size(context, 5),
                             ),
                             decoration: BoxDecoration(
                               color: ColorsManager.secondaryColor,
